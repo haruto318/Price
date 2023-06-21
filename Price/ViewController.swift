@@ -32,61 +32,61 @@ class ViewController: UIViewController {
     }
     
     struct returnJSON: Decodable {
-        let jobID: String
+        let job_id: String
         let status: String
-        let freeCredits: Int
-        let paidCredits: Int
+//        let freeCredits: Int
+//        let paidCredits: Int
         let results: [Result]
     }
 
-    struct Result: Decodable {
+    struct Result: Codable {
 //        let query: Query
 //        let success: Bool
 //        let metadata: Metadata
         let content: Content
     }
     
-    struct Content: Decodable{
+    struct Content: Codable{
         let id: String
         let name: String
-        let imageUrl: String
+        let image_url: String
         let description: String
-        let featureBullets: [String]
+        let feature_bullets: [String]
         let properties: [String]
         let url: String
-        let reviewCount: Int
-        let reviewRating: Int
+        let review_count: Int
+        let review_rating: Int
         let price: Double?
         let gtins: [String]?
         let eans: [String]?
-        let brandName: String?
-        let categoryPath: String?
-        let categoryName: String?
+        let brand_name: String?
+        let category_path: String?
+        let category_name: String?
         let specifications: [String: String]?
-        let offerCount: Int
-        let offersURL: String
+        let offer_count: Int
+        let offers_url: String
         let offers: [Offers]
     }
     
-    struct Offers: Decodable {
+    struct Offers: Codable {
         let id: String?
-        let productID: String
+        let product_id: String
         let price: String
-        let priceAdditionalInfo: [String]
-        let priceWithShipping: String
-        let shippingCosts: String
+        let price_additional_info: [String]
+        let price_with_shipping: String
+        let shipping_costs: String
         let tax: String
         let currency: String
-        let conditionText: String?
-        let conditionCode: String
+        let condition_text: String?
+        let condition_code: String
         let url: String
-        let shopName: String
-        let shopReviewCount: Int
-        let shopReviewRating: Int
-        let shopID: String
-        let shopSubID: String?
-        let shopExtendedSourceID: String
-        let shopURL: String
+        let shop_name: String
+        let shop_review_count: Int
+        let shop_review_rating: Int
+        let shop_id: String
+        let shop_sub_id: String?
+        let shop_extended_source_id: String
+        let shop_url: String
        
     }
     
@@ -159,6 +159,7 @@ class ViewController: UIViewController {
         let request = NSMutableURLRequest(url: NSURL(string: "https://api.priceapi.com/v2/jobs/\(id)/download?token=\(token)&job_id=\(id)")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
+        print("\n\nhttps://api.priceapi.com/v2/jobs/\(id)/download?token=\(token)&job_id=\(id)\n\n")
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
         let session = URLSession.shared
@@ -171,6 +172,7 @@ class ViewController: UIViewController {
                 }catch{
                     print("Error returnJSON")
                     print("after call")
+                    print(error)
                 }
             }
             

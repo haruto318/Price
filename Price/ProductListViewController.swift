@@ -32,20 +32,18 @@ class ProductListViewController: UIViewController {
     
     func getProducts() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        db.collection("store").getDocuments() { (querySnapshot, err) in
-                
-            if let err = err {
-                print("Error getting documents: (err)")
-                return
-            }
-            
-            for document in querySnapshot!.documents {
-                let name = document.data()["name"] as? String
-                self.storeNameLabel.text = name
+        let docRef = db.collection("store").document(uid)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let name = document.data()!["name"] as? String
                 print(name)
-                
+                self.storeNameLabel.text = name
+            } else {
+                print("Document does not exist")
             }
         }
+        
      }
 //
 //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
