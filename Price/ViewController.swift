@@ -19,11 +19,17 @@ class ViewController: UIViewController {
     
     var finished = false
     var flag = true
+
     
     struct checkingRequest: Decodable{
         let job_id: String
         let status: String
-        let successful: Int
+//        let successful: Int
+        init() {
+            job_id = ""
+            status = ""
+        }
+        
     }
     
     struct initialRequestJSON: Decodable{ //struct for the initial JSON parsing
@@ -138,7 +144,13 @@ class ViewController: UIViewController {
 //                    print(requestJSON.job_id)
                     if requestJSON.status == "new"{
                         print(requestJSON.job_id)
-                        self.checkStatus(requestJSON.job_id, baseUrl: self.base)
+//                        self.checkStatus(requestJSON.job_id, baseUrl: self.base)
+//                        self.waitResponse(requestJSON.job_id)
+//                        self.getResponse(requestJSON.job_id)
+//                        self.waitResponse2(requestJSON.job_id)
+//                        self.getResponse2(requestJSON.job_id)
+//                        print(self.isJobFinished("6492c9ff1a166053f005a126"))
+                        self.getResponse("6492c9ff1a166053f005a126")
 
                     }
 //                        self.checkStatus(requestJSON.job_id, baseUrl: base, itemName: self.valueField.text!)
@@ -195,13 +207,14 @@ class ViewController: UIViewController {
                 if let data = data{
                     do{
                         let checkJSON = try JSONDecoder().decode(checkingRequest.self, from: data)
+                        print(type(of: checkJSON))
                         print("PriceFinder: \(checkJSON.status)")
 
                         if(checkJSON.status != "finished"){
                             print(checkJSON.job_id)
                             self.checkStatus(id, baseUrl: baseUrl)
                         } else{
-                            self.getJSON(id, baseUrl: baseUrl)
+                            self.getJSON(id, baseUrl: self.base)
                         }
 
                     }catch{
@@ -214,6 +227,80 @@ class ViewController: UIViewController {
             statusTask.resume()
         }
     }
+    
+    
+    func isJobFinished(_ id: String) -> Bool{
+        var isFinished: Bool = false
+        let headers = ["accept": "application/json"]
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api.priceapi.com/v2/jobs/\(id)?token=\(token)")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+
+        let session = URLSession.shared
+        let dataTask =  session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+          if (error != nil) {
+            print(error as Any)
+          } else {
+              if let data = data{
+                  do{
+                      let checkJSON = try JSONDecoder().decode(checkingRequest.self, from: data)
+                      print(checkJSON)
+                      print(checkJSON.status)
+                      if checkJSON.status == "finished" {
+                          isFinished = true
+                      }
+                  }catch{
+                      print("Error returnJSON")
+                      print("after call")
+                      print(error)
+                  }
+              }
+          }
+        })
+        dataTask.resume()
+        return isFinished
+    }
+    
+    
+    func getResponse(_ id:String){
+//        while !isJobFinished(id){
+//            print("waiting 20 sencond")
+//            sleep(20)
+//        }
+        let headers = ["accept": "application/json"]
+
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api.priceapi.com/v2/jobs/\(id)/download?token=\(token)&job_id=\(id)")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+          if (error != nil) {
+            print(error as Any)
+          } else {
+              if let data = data{
+                  do{
+                      let returnJSON = try JSONDecoder().decode(returnJSON.self, from: data)
+                      print(returnJSON)
+                      
+                  }catch{
+                      print("Error returnJSON")
+                      print("after call")
+                      print(error)
+                  }
+              }
+          }
+        })
+
+        dataTask.resume()
+    }
+    
+    
+    
 
 }
 
