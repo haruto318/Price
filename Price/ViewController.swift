@@ -174,12 +174,12 @@ class ViewController: UIViewController {
                 }
             }
             
-            if (error != nil) {
-                print(error as Any)
-            } else {
-                let httpResponse = response as? HTTPURLResponse
-                print(httpResponse)
-            }
+//            if (error != nil) {
+//                print(error as Any)
+//            } else {
+//                let httpResponse = response as? HTTPURLResponse
+//                print(httpResponse)
+//            }
         })
         dataTask.resume()
     }

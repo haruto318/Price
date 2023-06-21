@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>660237023350-f6eugaaaomtcb8oq5esqt6tf51kp77lr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.660237023350-f6eugaaaomtcb8oq5esqt6tf51kp77lr</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB7Ez-sK74ieAlc-iwZIsqt46xBoPR0jIU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>660237023350</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>app.hamano.kemari.Price</string>
+	<key>PROJECT_ID</key>
+	<string>price-16ddf</string>
+	<key>STORAGE_BUCKET</key>
+	<string>price-16ddf.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:660237023350:ios:59a44d420a2d86a7d80757</string>
+</dict>
+</plist>

@@ -2,40 +2,43 @@
 //  HomeViewController.swift
 //  Price
 //
-//  Created by Haruto Hamano on 2023/06/14.
+//  Created by Haruto Hamano on 2023/06/20.
 //
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    let categories = ["iPhone", "Laptop", "backpack"]
+    var selectedCategory: String = ""
     
-    @IBOutlet var tableView: UITableView!
-
+    @IBOutlet weak var homeTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
 
-        // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return categories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell")!
+        cell.textLabel?.text = self.categories[indexPath.row]
+        return cell
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedCategory = categories[indexPath.row]
+        self.performSegue(withIdentifier: "toComparePrice", sender: nil)
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     }
-    */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toComparePrice"{
+            let ComparePriceViewController = segue.destination as! ComparePriceViewController
+            ComparePriceViewController.selectedCategory = self.selectedCategory
+        }
+    }
 
 }
