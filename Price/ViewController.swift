@@ -42,57 +42,56 @@ class ViewController: UIViewController {
         let status: String
 //        let freeCredits: Int
 //        let paidCredits: Int
-        let results: [Result]
+        var results: [Result]?
     }
 
     struct Result: Codable {
 //        let query: Query
 //        let success: Bool
 //        let metadata: Metadata
-        let content: Content
+        var content: Content?
     }
     
     struct Content: Codable{
-        let id: String
-        let name: String
-        let image_url: String
-        let description: String
-        let feature_bullets: [String]
-        let properties: [String]
-        let url: String
-        let review_count: Int
-        let review_rating: Int
-        let price: Double?
-        let gtins: [String]?
-        let eans: [String]?
-        let brand_name: String?
-        let category_path: String?
-        let category_name: String?
-        let specifications: [String: String]?
-        let offer_count: Int
-        let offers_url: String
-        let offers: [Offers]
+        var id: String?
+        var name: String?
+        var image_url: String?
+        var description: String?
+        var feature_bullets: [String]?
+        var properties: [String]?
+        var url: String?
+        var review_count: Int?
+        var review_rating: Int?
+        var price: Double?
+        var gtins: [String]?
+        var eans: [String]?
+        var brand_name: String?
+        var category_path: String?
+        var category_name: String?
+        var offer_count: Int?
+        var offers_url: String?
+        var offers: [Offers]?
     }
     
     struct Offers: Codable {
-        let id: String?
-        let product_id: String
-        let price: String
-        let price_additional_info: [String]
-        let price_with_shipping: String
-        let shipping_costs: String
-        let tax: String
-        let currency: String
-        let condition_text: String?
-        let condition_code: String
-        let url: String
-        let shop_name: String
-        let shop_review_count: Int
-        let shop_review_rating: Int
-        let shop_id: String
-        let shop_sub_id: String?
-        let shop_extended_source_id: String
-        let shop_url: String
+        var id: String?
+        var product_id: String?
+        var price: String?
+        var price_additional_info: [String]?
+        var price_with_shipping: String?
+        var shipping_costs: String?
+        var tax: String?
+        var currency: String?
+        var condition_text: String?
+        var condition_code: String?
+        var url: String?
+        var shop_name: String?
+        var shop_review_count: Int?
+        var shop_review_rating: Int?
+        var shop_id: String?
+        var shop_sub_id: String?
+        var shop_extended_source_id: String?
+        var shop_url: String?
        
     }
     
@@ -101,7 +100,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("tap")
-        getJSON("649068edbacddc474c201521", baseUrl: base)
+//        getJSON("649068edbacddc474c201521", baseUrl: base)
         // Do any additional setup after loading the view.
     }
     
@@ -150,7 +149,8 @@ class ViewController: UIViewController {
 //                        self.waitResponse2(requestJSON.job_id)
 //                        self.getResponse2(requestJSON.job_id)
 //                        print(self.isJobFinished("6492c9ff1a166053f005a126"))
-                        self.getResponse("6492c9ff1a166053f005a126")
+                        self.isJobFinished(requestJSON.job_id)
+//                        self.getResponse(requestJSON.job_id)
 
                     }
 //                        self.checkStatus(requestJSON.job_id, baseUrl: base, itemName: self.valueField.text!)
@@ -229,7 +229,7 @@ class ViewController: UIViewController {
     }
     
     
-    func isJobFinished(_ id: String) -> Bool{
+    func isJobFinished(_ id: String) -> Void{
         var isFinished: Bool = false
         let headers = ["accept": "application/json"]
         let request = NSMutableURLRequest(url: NSURL(string: "https://api.priceapi.com/v2/jobs/\(id)?token=\(token)")! as URL,
@@ -251,6 +251,9 @@ class ViewController: UIViewController {
                       if checkJSON.status == "finished" {
                           isFinished = true
                       }
+                      if checkJSON.status != "finished"{
+                          self.isJobFinished(id)
+                      }
                   }catch{
                       print("Error returnJSON")
                       print("after call")
@@ -258,17 +261,16 @@ class ViewController: UIViewController {
                   }
               }
           }
+            if isFinished {
+                self.getResponse(id)
+            }
         })
         dataTask.resume()
-        return isFinished
     }
     
     
     func getResponse(_ id:String){
-//        while !isJobFinished(id){
-//            print("waiting 20 sencond")
-//            sleep(20)
-//        }
+        sleep(20)///waiting 20 second for waiting creating data completely on the API server.
         let headers = ["accept": "application/json"]
 
         let request = NSMutableURLRequest(url: NSURL(string: "https://api.priceapi.com/v2/jobs/\(id)/download?token=\(token)&job_id=\(id)")! as URL,
@@ -286,7 +288,6 @@ class ViewController: UIViewController {
                   do{
                       let returnJSON = try JSONDecoder().decode(returnJSON.self, from: data)
                       print(returnJSON)
-                      
                   }catch{
                       print("Error returnJSON")
                       print("after call")
@@ -295,7 +296,6 @@ class ViewController: UIViewController {
               }
           }
         })
-
         dataTask.resume()
     }
     
