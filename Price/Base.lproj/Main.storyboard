@@ -51,6 +51,12 @@
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="b1c-Yq-fnl">
                                                             <rect key="frame" x="0.0" y="0.0" width="144" height="191"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sST-m7-IbE">
+                                                                    <rect key="frame" x="8" y="7" width="128" height="176"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                </imageView>
+                                                            </subviews>
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="144" height="191"/>
                                                     </collectionViewCell>
@@ -77,6 +83,12 @@
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oHj-37-JIT">
                                                             <rect key="frame" x="0.0" y="0.0" width="144" height="191"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fj6-9D-QfO">
+                                                                    <rect key="frame" x="8" y="8" width="128" height="176"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                </imageView>
+                                                            </subviews>
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="144" height="191"/>
                                                     </collectionViewCell>
@@ -103,6 +115,12 @@
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WKj-fa-b5g">
                                                             <rect key="frame" x="0.0" y="0.0" width="144" height="191"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jUM-vx-gMQ">
+                                                                    <rect key="frame" x="8" y="8" width="128" height="176"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                </imageView>
+                                                            </subviews>
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="144" height="191"/>
                                                     </collectionViewCell>
@@ -206,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kab-y4-K4M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2705" y="-206"/>
+            <point key="canvasLocation" x="-2706.1068702290077" y="-206.33802816901411"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="QYg-Ko-gTd">

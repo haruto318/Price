@@ -6,18 +6,18 @@
 //
 
 import UIKit
+import OrderedCollections
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
-    let electronicDict = ["television": "eogw", "speaker": "wega", "iphone": "wega"]
-    let clothesDict = ["tshirt": "", "longSleeveTshirt": "", "sweats": ""]
-    let cosmeticDict = ["faceWash": "", "perfume": "", "cleansingOil": ""]
+    let electronicDict: OrderedDictionary = ["TV": UIImage(named: "tv"), "Speaker": UIImage(named: "speaker"), "headphone": UIImage(named: "headphone"), "laptop": UIImage(named: "laptop")]
+    let clothesDict: OrderedDictionary = ["T-Shirt": UIImage(named: "shirt"), "Shoes": UIImage(named: "shoes"), "Sweater": UIImage(named: "sweater"), "Long_Shirt": UIImage(named: "longShirt")]
+    let cosmeticDict: OrderedDictionary = ["Body_Oil": UIImage(named: "body_oil"), "Lipstick": UIImage(named: "lipstick"), "Mascara": UIImage(named: "mascara")]
     
     @IBOutlet weak var electronicCollectionView: UICollectionView!
     @IBOutlet var clothesCollectionView: UICollectionView!
     @IBOutlet var cosmeticCollectionView: UICollectionView!
     
-    @IBOutlet var contentView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet var electronicCellImage: UIImage!
     
     @IBOutlet var valueField: UITextField!
     
@@ -29,7 +29,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         valueField.layer.cornerRadius = 22.5
         valueField.clipsToBounds = true
         
-        print(electronicDict.count)
+        print(electronicDict.elements[0])
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal // 横スクロール
@@ -59,16 +59,22 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "electronicCell", for: indexPath)
             cell.backgroundColor = .white
             cell.layer.cornerRadius = 22.5
+            let imageView = cell.contentView.viewWithTag(1) as! UIImageView
+            imageView.image = electronicDict.elements[indexPath.row].value
             return cell
         } else if collectionView == clothesCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "clothesCell", for: indexPath)
             cell.backgroundColor = .white
             cell.layer.cornerRadius = 22.5
+            let imageView = cell.contentView.viewWithTag(1) as! UIImageView
+            imageView.image = clothesDict.elements[indexPath.row].value
             return cell
         } else if collectionView == cosmeticCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cosmeticCell", for: indexPath)
             cell.backgroundColor = .white
             cell.layer.cornerRadius = 22.5
+            let imageView = cell.contentView.viewWithTag(1) as! UIImageView
+            imageView.image = cosmeticDict.elements[indexPath.row].value
             return cell
         }
         
