@@ -102,11 +102,13 @@ class ViewController: UIViewController {
         print("tap")
 //        getJSON("649068edbacddc474c201521", baseUrl: base)
         // Do any additional setup after loading the view.
+//    https://www.google.com/shopping/product/r/US/1230388296225396604?gl=us&hl=en&q=iphone&sa=X&ved=2ahUKEwi226GXpPT_AhUFRpEFHUreC7wQ3JAGegUIAhCrAQ
+
+        
     }
     
     @IBAction func tapButton(){
         print("tapped")
-                
         let url = URL(string: base)
         
         if valueField.text != nil{
@@ -119,8 +121,8 @@ class ViewController: UIViewController {
               "country": "us",
               "topic": "product_and_offers",
               "key": "term",
-              "values": "\(valueField.text)",
-              "max_pages": "3",
+              "values": "\(valueField.text!)",
+              "max_pages": "10",
               "max_age": "1440",
               "timeout": "5",
               "token": token
