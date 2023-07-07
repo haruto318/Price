@@ -17,6 +17,7 @@
 		64567F9B2A3993AA00393840 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 64567F9A2A3993AA00393840 /* RealmSwift */; };
 		64A6A12B2A55AA2900CA3BA2 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 64A6A12A2A55AA2900CA3BA2 /* Collections */; };
 		64A6A12D2A55AA2900CA3BA2 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 64A6A12C2A55AA2900CA3BA2 /* OrderedCollections */; };
+		64A6A12F2A55C1A400CA3BA2 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A6A12E2A55C1A400CA3BA2 /* CategoryViewController.swift */; };
 		64D0006A2A4140BC002FE32C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D000692A4140BC002FE32C /* HomeViewController.swift */; };
 		64D0006C2A4155EA002FE32C /* ComparePriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D0006B2A4155EA002FE32C /* ComparePriceViewController.swift */; };
 		64D0006E2A4167A3002FE32C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D0006D2A4167A3002FE32C /* RegisterViewController.swift */; };
@@ -43,6 +44,7 @@
 		6438CA9B2A305592003FDD2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6438CA9E2A305592003FDD2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6438CAA02A305592003FDD2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64A6A12E2A55C1A400CA3BA2 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		64D000692A4140BC002FE32C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		64D0006B2A4155EA002FE32C /* ComparePriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparePriceViewController.swift; sourceTree = "<group>"; };
 		64D0006D2A4167A3002FE32C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				6438CA9D2A305592003FDD2E /* LaunchScreen.storyboard */,
 				6438CAA02A305592003FDD2E /* Info.plist */,
 				64D000692A4140BC002FE32C /* HomeViewController.swift */,
+				64A6A12E2A55C1A400CA3BA2 /* CategoryViewController.swift */,
 				64D0006B2A4155EA002FE32C /* ComparePriceViewController.swift */,
 				64D0006D2A4167A3002FE32C /* RegisterViewController.swift */,
 				64D0006F2A416BA1002FE32C /* GoogleService-Info.plist */,
@@ -210,6 +213,7 @@
 				64D000872A427A74002FE32C /* LoginViewController.swift in Sources */,
 				64D0006E2A4167A3002FE32C /* RegisterViewController.swift in Sources */,
 				6438CA952A305591003FDD2E /* SceneDelegate.swift in Sources */,
+				64A6A12F2A55C1A400CA3BA2 /* CategoryViewController.swift in Sources */,
 				64D0006A2A4140BC002FE32C /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,6 +13,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     let clothesDict: OrderedDictionary = ["T-Shirt": UIImage(named: "shirt"), "Shoes": UIImage(named: "shoes"), "Sweater": UIImage(named: "sweater"), "Long_Shirt": UIImage(named: "longShirt")]
     let cosmeticDict: OrderedDictionary = ["Body_Oil": UIImage(named: "body_oil"), "Lipstick": UIImage(named: "lipstick"), "Mascara": UIImage(named: "mascara")]
     
+    var selectedCategoryDict: OrderedDictionary<String,UIImage?>? = nil
+    var selectedCategoryName: String = ""
+    
     @IBOutlet weak var electronicCollectionView: UICollectionView!
     @IBOutlet var clothesCollectionView: UICollectionView!
     @IBOutlet var cosmeticCollectionView: UICollectionView!
@@ -28,8 +31,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         valueField.layer.borderWidth = 1.0
         valueField.layer.cornerRadius = 22.5
         valueField.clipsToBounds = true
-        
-        print(electronicDict.elements[0])
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal // 横スクロール
@@ -77,8 +78,43 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             imageView.image = cosmeticDict.elements[indexPath.row].value
             return cell
         }
-        
         return UICollectionViewCell()
+    }
+    
+    @IBAction func electronicButton(){
+        selectedCategoryDict = electronicDict
+        selectedCategoryName = "ELECTRONICS"
+        if selectedCategoryDict != nil && selectedCategoryName != ""{
+            self.performSegue(withIdentifier: "visitCategoryView", sender: nil)
+        }
+    }
+    
+    @IBAction func clotheButton(){
+        selectedCategoryDict = clothesDict
+        selectedCategoryName = "CLOTHES"
+        if selectedCategoryDict != nil && selectedCategoryName != ""{
+            self.performSegue(withIdentifier: "visitCategoryView", sender: nil)
+        }
+    }
+    
+    @IBAction func cosmeticButton(){
+        selectedCategoryDict = cosmeticDict
+        selectedCategoryName = "COSMETICS"
+        if selectedCategoryDict != nil && selectedCategoryName != ""{
+            self.performSegue(withIdentifier: "visitCategoryView", sender: nil)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "visitCategoryView" {
+            let CategoryViewController = segue.destination as! CategoryViewController
+            CategoryViewController.selectedCategoryDict = self.selectedCategoryDict!
+            CategoryViewController.selectedCategoryName = self.selectedCategoryName
+        }
+//        else if segue.identifier == "visitMemoryView" {
+//            let MemoryViewController = segue.destination as! MemoryViewController
+//            MemoryViewController.selectedMemory = self.selectedMemory!
+//        }
     }
 
 }
