@@ -52,4 +52,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         imageView.image = selectedCategoryDict!.elements[indexPath.row].value
         return cell
     }
+    
+    @IBAction func backBtnAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
