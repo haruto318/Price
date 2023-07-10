@@ -100,11 +100,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("tap")
-//        getJSON("649068edbacddc474c201521", baseUrl: base)
-        // Do any additional setup after loading the view.
-//    https://www.google.com/shopping/product/r/US/1230388296225396604?gl=us&hl=en&q=iphone&sa=X&ved=2ahUKEwi226GXpPT_AhUFRpEFHUreC7wQ3JAGegUIAhCrAQ
-
-        
     }
     
     @IBAction func tapButton(){

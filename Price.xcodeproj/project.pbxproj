@@ -13,8 +13,8 @@
 		6438CA9A2A305591003FDD2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6438CA982A305591003FDD2E /* Main.storyboard */; };
 		6438CA9C2A305592003FDD2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6438CA9B2A305592003FDD2E /* Assets.xcassets */; };
 		6438CA9F2A305592003FDD2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6438CA9D2A305592003FDD2E /* LaunchScreen.storyboard */; };
-		64567F992A3993AA00393840 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 64567F982A3993AA00393840 /* Realm */; };
-		64567F9B2A3993AA00393840 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 64567F9A2A3993AA00393840 /* RealmSwift */; };
+		645495552A59B57A0052A2E9 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 645495542A59B57A0052A2E9 /* SkeletonView */; };
+		645495572A5A954E0052A2E9 /* ProductInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645495562A5A954E0052A2E9 /* ProductInfo.swift */; };
 		64A6A12B2A55AA2900CA3BA2 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 64A6A12A2A55AA2900CA3BA2 /* Collections */; };
 		64A6A12D2A55AA2900CA3BA2 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 64A6A12C2A55AA2900CA3BA2 /* OrderedCollections */; };
 		64A6A12F2A55C1A400CA3BA2 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A6A12E2A55C1A400CA3BA2 /* CategoryViewController.swift */; };
@@ -44,6 +44,7 @@
 		6438CA9B2A305592003FDD2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6438CA9E2A305592003FDD2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6438CAA02A305592003FDD2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		645495562A5A954E0052A2E9 /* ProductInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfo.swift; sourceTree = "<group>"; };
 		64A6A12E2A55C1A400CA3BA2 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		64D000692A4140BC002FE32C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		64D0006B2A4155EA002FE32C /* ComparePriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparePriceViewController.swift; sourceTree = "<group>"; };
@@ -65,9 +66,8 @@
 				64D000772A416F20002FE32C /* FirebaseAuth in Frameworks */,
 				64D000832A416F20002FE32C /* FirebaseFirestoreSwift in Frameworks */,
 				64A6A12B2A55AA2900CA3BA2 /* Collections in Frameworks */,
-				64567F9B2A3993AA00393840 /* RealmSwift in Frameworks */,
+				645495552A59B57A0052A2E9 /* SkeletonView in Frameworks */,
 				64D0007F2A416F20002FE32C /* FirebaseFirestore in Frameworks */,
-				64567F992A3993AA00393840 /* Realm in Frameworks */,
 				64D0007B2A416F20002FE32C /* FirebaseDatabase in Frameworks */,
 				64A6A12D2A55AA2900CA3BA2 /* OrderedCollections in Frameworks */,
 				64D000732A416F20002FE32C /* FirebaseAnalytics in Frameworks */,
@@ -110,6 +110,7 @@
 				64D0006F2A416BA1002FE32C /* GoogleService-Info.plist */,
 				64D000862A427A74002FE32C /* LoginViewController.swift */,
 				64D000842A417B9A002FE32C /* ProductListViewController.swift */,
+				645495562A5A954E0052A2E9 /* ProductInfo.swift */,
 			);
 			path = Price;
 			sourceTree = "<group>";
@@ -131,8 +132,6 @@
 			);
 			name = Price;
 			packageProductDependencies = (
-				64567F982A3993AA00393840 /* Realm */,
-				64567F9A2A3993AA00393840 /* RealmSwift */,
 				64D000722A416F20002FE32C /* FirebaseAnalytics */,
 				64D000742A416F20002FE32C /* FirebaseAnalyticsSwift */,
 				64D000762A416F20002FE32C /* FirebaseAuth */,
@@ -144,6 +143,7 @@
 				64D000822A416F20002FE32C /* FirebaseFirestoreSwift */,
 				64A6A12A2A55AA2900CA3BA2 /* Collections */,
 				64A6A12C2A55AA2900CA3BA2 /* OrderedCollections */,
+				645495542A59B57A0052A2E9 /* SkeletonView */,
 			);
 			productName = Price;
 			productReference = 6438CA8F2A305591003FDD2E /* Price.app */;
@@ -174,9 +174,9 @@
 			);
 			mainGroup = 6438CA862A305591003FDD2E;
 			packageReferences = (
-				64567F972A3993AA00393840 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				64D000712A416F20002FE32C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				64A6A1292A55AA2800CA3BA2 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				645495532A59B57A0052A2E9 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 6438CA902A305591003FDD2E /* Products */;
 			projectDirPath = "";
@@ -209,6 +209,7 @@
 				64D0006C2A4155EA002FE32C /* ComparePriceViewController.swift in Sources */,
 				6438CA972A305591003FDD2E /* ViewController.swift in Sources */,
 				64D000852A417B9A002FE32C /* ProductListViewController.swift in Sources */,
+				645495572A5A954E0052A2E9 /* ProductInfo.swift in Sources */,
 				6438CA932A305591003FDD2E /* AppDelegate.swift in Sources */,
 				64D000872A427A74002FE32C /* LoginViewController.swift in Sources */,
 				64D0006E2A4167A3002FE32C /* RegisterViewController.swift in Sources */,
@@ -434,12 +435,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		64567F972A3993AA00393840 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		645495532A59B57A0052A2E9 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift";
+			repositoryURL = "https://github.com/Juanpe/SkeletonView";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.39.1;
+				minimumVersion = 1.0.0;
 			};
 		};
 		64A6A1292A55AA2800CA3BA2 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
@@ -461,15 +462,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		64567F982A3993AA00393840 /* Realm */ = {
+		645495542A59B57A0052A2E9 /* SkeletonView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 64567F972A3993AA00393840 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		64567F9A2A3993AA00393840 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 64567F972A3993AA00393840 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
+			package = 645495532A59B57A0052A2E9 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 		64A6A12A2A55AA2900CA3BA2 /* Collections */ = {
 			isa = XCSwiftPackageProductDependency;
