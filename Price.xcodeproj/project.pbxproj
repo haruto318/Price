@@ -18,6 +18,10 @@
 		64A6A12B2A55AA2900CA3BA2 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 64A6A12A2A55AA2900CA3BA2 /* Collections */; };
 		64A6A12D2A55AA2900CA3BA2 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 64A6A12C2A55AA2900CA3BA2 /* OrderedCollections */; };
 		64A6A12F2A55C1A400CA3BA2 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A6A12E2A55C1A400CA3BA2 /* CategoryViewController.swift */; };
+		64C5FD732A5E4906006F45F2 /* ContextMenuSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 64C5FD722A5E4906006F45F2 /* ContextMenuSwift */; };
+		64C5FD7E2A5EB06D006F45F2 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 64C5FD7D2A5EB06D006F45F2 /* Realm */; };
+		64C5FD802A5EB06D006F45F2 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 64C5FD7F2A5EB06D006F45F2 /* RealmSwift */; };
+		64C5FD822A5EC10F006F45F2 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5FD812A5EC10F006F45F2 /* CartViewController.swift */; };
 		64D0006A2A4140BC002FE32C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D000692A4140BC002FE32C /* HomeViewController.swift */; };
 		64D0006C2A4155EA002FE32C /* ComparePriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D0006B2A4155EA002FE32C /* ComparePriceViewController.swift */; };
 		64D0006E2A4167A3002FE32C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D0006D2A4167A3002FE32C /* RegisterViewController.swift */; };
@@ -46,6 +50,7 @@
 		6438CAA02A305592003FDD2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		645495562A5A954E0052A2E9 /* ProductInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfo.swift; sourceTree = "<group>"; };
 		64A6A12E2A55C1A400CA3BA2 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		64C5FD812A5EC10F006F45F2 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		64D000692A4140BC002FE32C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		64D0006B2A4155EA002FE32C /* ComparePriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparePriceViewController.swift; sourceTree = "<group>"; };
 		64D0006D2A4167A3002FE32C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -59,8 +64,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64C5FD7E2A5EB06D006F45F2 /* Realm in Frameworks */,
 				64D0007D2A416F20002FE32C /* FirebaseDatabaseSwift in Frameworks */,
 				64D000752A416F20002FE32C /* FirebaseAnalyticsSwift in Frameworks */,
+				64C5FD802A5EB06D006F45F2 /* RealmSwift in Frameworks */,
 				64D000792A416F20002FE32C /* FirebaseAuthCombine-Community in Frameworks */,
 				64D000812A416F20002FE32C /* FirebaseFirestoreCombine-Community in Frameworks */,
 				64D000772A416F20002FE32C /* FirebaseAuth in Frameworks */,
@@ -70,6 +77,7 @@
 				64D0007F2A416F20002FE32C /* FirebaseFirestore in Frameworks */,
 				64D0007B2A416F20002FE32C /* FirebaseDatabase in Frameworks */,
 				64A6A12D2A55AA2900CA3BA2 /* OrderedCollections in Frameworks */,
+				64C5FD732A5E4906006F45F2 /* ContextMenuSwift in Frameworks */,
 				64D000732A416F20002FE32C /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,6 +119,7 @@
 				64D000862A427A74002FE32C /* LoginViewController.swift */,
 				64D000842A417B9A002FE32C /* ProductListViewController.swift */,
 				645495562A5A954E0052A2E9 /* ProductInfo.swift */,
+				64C5FD812A5EC10F006F45F2 /* CartViewController.swift */,
 			);
 			path = Price;
 			sourceTree = "<group>";
@@ -144,6 +153,9 @@
 				64A6A12A2A55AA2900CA3BA2 /* Collections */,
 				64A6A12C2A55AA2900CA3BA2 /* OrderedCollections */,
 				645495542A59B57A0052A2E9 /* SkeletonView */,
+				64C5FD722A5E4906006F45F2 /* ContextMenuSwift */,
+				64C5FD7D2A5EB06D006F45F2 /* Realm */,
+				64C5FD7F2A5EB06D006F45F2 /* RealmSwift */,
 			);
 			productName = Price;
 			productReference = 6438CA8F2A305591003FDD2E /* Price.app */;
@@ -177,6 +189,8 @@
 				64D000712A416F20002FE32C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				64A6A1292A55AA2800CA3BA2 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				645495532A59B57A0052A2E9 /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				64C5FD712A5E4906006F45F2 /* XCRemoteSwiftPackageReference "ContextMenuSwift" */,
+				64C5FD7C2A5EB06D006F45F2 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 6438CA902A305591003FDD2E /* Products */;
 			projectDirPath = "";
@@ -213,6 +227,7 @@
 				6438CA932A305591003FDD2E /* AppDelegate.swift in Sources */,
 				64D000872A427A74002FE32C /* LoginViewController.swift in Sources */,
 				64D0006E2A4167A3002FE32C /* RegisterViewController.swift in Sources */,
+				64C5FD822A5EC10F006F45F2 /* CartViewController.swift in Sources */,
 				6438CA952A305591003FDD2E /* SceneDelegate.swift in Sources */,
 				64A6A12F2A55C1A400CA3BA2 /* CategoryViewController.swift in Sources */,
 				64D0006A2A4140BC002FE32C /* HomeViewController.swift in Sources */,
@@ -451,6 +466,22 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		64C5FD712A5E4906006F45F2 /* XCRemoteSwiftPackageReference "ContextMenuSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/umerjabbar/ContextMenuSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		64C5FD7C2A5EB06D006F45F2 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.41.0;
+			};
+		};
 		64D000712A416F20002FE32C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -476,6 +507,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 64A6A1292A55AA2800CA3BA2 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
+		};
+		64C5FD722A5E4906006F45F2 /* ContextMenuSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64C5FD712A5E4906006F45F2 /* XCRemoteSwiftPackageReference "ContextMenuSwift" */;
+			productName = ContextMenuSwift;
+		};
+		64C5FD7D2A5EB06D006F45F2 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64C5FD7C2A5EB06D006F45F2 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		64C5FD7F2A5EB06D006F45F2 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64C5FD7C2A5EB06D006F45F2 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		64D000722A416F20002FE32C /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

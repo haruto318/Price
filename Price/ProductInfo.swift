@@ -6,17 +6,12 @@
 //
 
 import Foundation
+import RealmSwift
 
-class ProductInfo: NSObject{
-    var url: String
-    var name: String
-    var min_price: String
-    var image_url: String
-    
-    init(url: String, name:String, min_price: String, image_url: String){
-        self.url = url
-        self.name = name
-        self.min_price = min_price
-        self.image_url = image_url
-    }
+class ProductInfo: Object{
+    @objc dynamic var url: String = ""
+    @objc dynamic var name: String = ""
+    @objc dynamic var price: String = ""
+    @objc dynamic var imageUrl: String = ""
+    @objc dynamic var num: Int = 0
 }

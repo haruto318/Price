@@ -7,12 +7,15 @@
 
 import UIKit
 import SkeletonView
+import ContextMenuSwift
+import RealmSwift
 
-class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate{
+    
+    let realm = try! Realm()
     
     let token = "JYYQLVJZXWIGERFAUHEYFUJSCKAMJKFZXJMBJHSQYHGQBZMHGDZDQRZKQTGHXNTU"
     let base = "https://api.priceapi.com/v2/jobs/"
-    
     
     struct checkingRequest: Decodable{
         let job_id: String
@@ -22,7 +25,6 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
             job_id = ""
             status = ""
         }
-        
     }
     
     struct initialRequestJSON: Decodable{ //struct for the initial JSON parsing
@@ -387,8 +389,15 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
     @IBOutlet var keywordLabel: UILabel!
     @IBOutlet var keywordField: UITextField!
     
+    var addName: String = ""
+    var addPrice: String = ""
+    var addImageUrl: String = ""
+    var addUrl: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        searchedCollectionView.register(UINib(nibName: "categoryCell", bundle: nil), forCellWithReuseIdentifier: "categoryCell")
         
         keywordLabel.text = keyword
         searchedCollectionView.dataSource = self
@@ -405,6 +414,17 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
                                                    bottom: 30,
                                                    right: 20)
         searchedCollectionView.collectionViewLayout = layout
+        
+        //長押し時の判定
+            // UILongPressGestureRecognizer宣言
+            let longPressRecognizer = UILongPressGestureRecognizer(target: self,
+                                                                   action: #selector(ComparePriceViewController.cellLongPressed(_ :)))
+
+            // `UIGestureRecognizerDelegate`を設定するのをお忘れなく
+            longPressRecognizer.delegate = self
+
+            // tableViewにrecognizerを設定
+        searchedCollectionView.addGestureRecognizer(longPressRecognizer)
         
 //        startAPI()　/// 本番用
         
@@ -443,13 +463,21 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
             }
         }
 
+
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                              didSelectItemAt indexPath: IndexPath) {
+        // move to link of product
+        guard let url = URL(string: sampleUrl[indexPath.row]) else { return }
+        UIApplication.shared.open(url)
     }
     
     @IBAction func backBtnAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     @IBAction func startAPI(){
             let url = URL(string: base)
             
@@ -592,4 +620,131 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
         })
         dataTask.resume()
     }
+    
+    func updateRealm(url: String, name: String, imageUrl: String, price: String){
+        let productInfo: ProductInfo! = realm.objects(ProductInfo.self).filter("url == %@", addUrl).first
+        
+        if productInfo != nil {
+            try! realm.write {
+                productInfo.num += 1
+            }
+        } else {
+            let newProduct = ProductInfo()
+            newProduct.name = name
+            newProduct.url = url
+            newProduct.price = price
+            newProduct.imageUrl = imageUrl
+            newProduct.num = 1
+            try! realm.write {
+                realm.add(newProduct)
+                print("add done")
+            }
+        }
+    }
+}
+
+// MARK: ContextMenuDelegate
+extension ComparePriceViewController: ContextMenuDelegate {
+    
+    /**
+        コンテキストメニューの選択肢が選択された時に実行される
+        - Parameters:
+            - contextMenu: そのコンテキストメニューだと思われる
+            - cell: **選択されたコンテキストメニューの**セル
+            - targetView: コンテキストメニューの発生源のビュー
+            - item: 選択されたコンテキストのアイテム(タイトルとか画像とかが入ってる)
+            - index: **選択されたコンテキストのアイテムの**座標
+        - Returns: よくわからない(多分成功したらtrue...?)
+     */
+    func contextMenuDidSelect(_ contextMenu: ContextMenu,
+                              cell: ContextMenuCell,
+                              targetedView: UIView,
+                              didSelect item: ContextMenuItem,
+                              forRowAt index: Int) -> Bool {
+        
+        
+        print("コンテキストメニューの", index, "番目のセルが選択された！")
+        print("そのセルには", item.title, "というテキストが書いてあるよ!")
+        
+        switch index {
+            case 0:
+                //0番目のセル(1番上のメニューがタップされると実行されます)
+                //この例では編集メニューに設定してあります
+                print(addName)
+                print("編集が押された!")
+            updateRealm(url: addUrl, name: addName, imageUrl: addImageUrl, price: addPrice)
+            
+            case 1:
+                //同様です
+                print("削除が押された!")
+            
+            default:
+                //ここはその他のセルがタップされた際に実行されます
+                break
+            }
+            
+            //最後にbool値を返します
+            return true
+
+    }
+    
+    func contextMenuDidDeselect(_ contextMenu: ContextMenu,
+                                cell: ContextMenuCell,
+                                targetedView: UIView,
+                                didSelect item: ContextMenuItem,
+                                forRowAt index: Int) {
+    }
+    
+    /**
+     コンテキストメニューが表示されたら呼ばれる
+     */
+    func contextMenuDidAppear(_ contextMenu: ContextMenu) {
+        print("コンテキストメニューが表示された!")
+    }
+    
+    /**
+     コンテキストメニューが消えたら呼ばれる
+     */
+    func contextMenuDidDisappear(_ contextMenu: ContextMenu) {
+        print("コンテキストメニューが消えた!")
+    }
+    
+    /// セルが長押しした際に呼ばれるメソッド
+    @objc func cellLongPressed(_ recognizer: UILongPressGestureRecognizer) {
+
+        // 押された位置でcellのPathを取得
+        let point = recognizer.location(in: searchedCollectionView)
+        // 押された位置に対応するindexPath
+        let indexPath = searchedCollectionView.indexPathForItem(at: point)
+            
+        if indexPath == nil {  //indexPathがなかったら
+                
+            return  //すぐに返り、後の処理はしない
+                
+        } else if recognizer.state == UIGestureRecognizer.State.began  {
+            // 長押しされた場合の処理
+            print(indexPath?.row)
+            addName = sampleName[indexPath!.row] /// sample用
+            addPrice = samplePrice[indexPath!.row] /// sample用
+            addImageUrl = sampleImageUrl[indexPath!.row] /// sample用
+            addUrl = sampleUrl[indexPath!.row]
+            print(sampleName[indexPath!.row])
+//          let addName = productNames[indexPath?.row] /// 本番用
+//          let addPrice = "USD " + productPrice[indexPath?.row] /// 本番用
+//          let addUrl = URL(string: productImageUrl[indexPath?.row]) /// 本番用
+                
+            //コンテキストメニューの内容を作成します
+            let add = ContextMenuItemWithImage(title: "Add to Cart", image: UIImage(systemName: "cart")!)
+            let delete = ContextMenuItemWithImage(title: "削除", image: UIImage(systemName: "trash")!)
+                
+         //コンテキストメニューに表示するアイテムを決定します
+            CM.items = [add, delete]
+        //表示します
+            CM.showMenu(viewTargeted: searchedCollectionView.cellForItem(at: indexPath!)!,
+                        delegate: self,
+                        animated: true)
+                
+        }
+    }
+    
 }
