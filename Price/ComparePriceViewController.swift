@@ -646,16 +646,6 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
 // MARK: ContextMenuDelegate
 extension ComparePriceViewController: ContextMenuDelegate {
     
-    /**
-        コンテキストメニューの選択肢が選択された時に実行される
-        - Parameters:
-            - contextMenu: そのコンテキストメニューだと思われる
-            - cell: **選択されたコンテキストメニューの**セル
-            - targetView: コンテキストメニューの発生源のビュー
-            - item: 選択されたコンテキストのアイテム(タイトルとか画像とかが入ってる)
-            - index: **選択されたコンテキストのアイテムの**座標
-        - Returns: よくわからない(多分成功したらtrue...?)
-     */
     func contextMenuDidSelect(_ contextMenu: ContextMenu,
                               cell: ContextMenuCell,
                               targetedView: UIView,

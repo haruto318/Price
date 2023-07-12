@@ -13,6 +13,9 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     @IBOutlet weak var cartCollectionView: UICollectionView!
     
+    @IBOutlet var totalPriceLabel: UILabel!
+    @IBOutlet var totalProductLabel: UILabel!
+    
     let realm = try! Realm()
     var products: [ProductInfo] = []
 
@@ -34,11 +37,29 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
 
         // Do any additional setup after loading the view.
         products = readProducts()
+
         
         print(products[0])
         
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        var totalPrice: Float = 0
+        var totalProduct: Int = 0
+        
+        for product in products {
+            print(product.price)
+            totalPrice += Float(product.price)!
+            totalProduct += product.num
+        }
+        
+        totalPriceLabel.text = "USD " + String(totalPrice)
+        totalProductLabel.text = "Total " + String(totalProduct) + " Items"
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return products.count
@@ -66,6 +87,13 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         productPriceLabel.text = "USD " + products[indexPath.row].price
         let productaNumLabel = cell.contentView.viewWithTag(4) as! UILabel
         productaNumLabel.text = String(products[indexPath.row].num)
+        let container = cell.contentView.viewWithTag(5) as! UIView
+        container.layer.cornerRadius = 30
+        container.layer.borderWidth = 2.0
+        container.layer.borderColor = UIColor.gray.cgColor
+//        plusBtn.addTarget(self,
+//                          action: #selector(self.delData(sender: , url: products[indexPath.row].url)),
+//                       for: .touchUpInside)
         return cell
     }
     
