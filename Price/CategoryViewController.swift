@@ -18,6 +18,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     
     @IBOutlet var valueField: UITextField!
+    var keyword: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,5 +56,14 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     @IBAction func backBtnAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func searchStart(){
+        if valueField.text != nil{
+            keyword = valueField.text!
+            if selectedCategoryDict != nil && selectedCategoryName != ""{
+                self.performSegue(withIdentifier: "searchStartView", sender: nil)
+            }
+        }
     }
 }

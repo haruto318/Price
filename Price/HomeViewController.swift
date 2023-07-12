@@ -23,6 +23,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet var electronicCellImage: UIImage!
     
     @IBOutlet var valueField: UITextField!
+    var keyword: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,16 +106,23 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    @IBAction func searchStart(){
+        if valueField.text != nil{
+            keyword = valueField.text!
+            self.performSegue(withIdentifier: "searchStartView", sender: nil)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "visitCategoryView" {
             let CategoryViewController = segue.destination as! CategoryViewController
             CategoryViewController.selectedCategoryDict = self.selectedCategoryDict!
             CategoryViewController.selectedCategoryName = self.selectedCategoryName
         }
-//        else if segue.identifier == "visitMemoryView" {
-//            let MemoryViewController = segue.destination as! MemoryViewController
-//            MemoryViewController.selectedMemory = self.selectedMemory!
-//        }
+        else if segue.identifier == "searchStartView" {
+            let ComparePriceViewController = segue.destination as! ComparePriceViewController
+            ComparePriceViewController.keyword = self.keyword
+        }
     }
 
 }
