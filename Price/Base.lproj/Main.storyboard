@@ -415,6 +415,7 @@
                     <connections>
                         <outlet property="keywordLabel" destination="Adr-tD-Lmf" id="qcQ-ft-xq8"/>
                         <outlet property="searchedCollectionView" destination="Hze-c5-aAc" id="VzZ-JZ-YkA"/>
+                        <outlet property="segmented" destination="hqN-bN-xDo" id="Opi-Ik-5t0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZXI-5j-Evf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

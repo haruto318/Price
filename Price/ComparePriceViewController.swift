@@ -388,6 +388,9 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
     
     @IBOutlet var keywordLabel: UILabel!
     @IBOutlet var keywordField: UITextField!
+    @IBOutlet  weak var segmented: UISegmentedControl!
+    
+    var index: Int = 0
     
     var addName: String = ""
     var addPrice: String = ""
@@ -426,13 +429,25 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
             // tableViewにrecognizerを設定
         searchedCollectionView.addGestureRecognizer(longPressRecognizer)
         
+        segmented.addTarget(self, action: #selector(ValueChanged), for: .valueChanged)
+        
 //        startAPI()　/// 本番用
         
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return productUrl.count /// 本番用
-        return sampleUrl.count /// sample
+        switch index{
+        case 0:
+            // return productUrl.count /// 本番用
+            return sampleUrl.count
+        case 1:
+            return 0
+        default:
+            print("error")
+            return 0
+        }
+////        return productUrl.count /// 本番用
+//        return sampleUrl.count /// sample
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -445,23 +460,64 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
         
         let imageView = cell.contentView.viewWithTag(3) as! UIImageView
         
-        productNameLabel.text = sampleName[indexPath.row] /// sample
-        priceLabel.text = "USD " + samplePrice[indexPath.row] /// sample
-        let url = URL(string: sampleImageUrl[indexPath.row]) /// sample
-//        productNameLabel.text = productNames[indexPath.row] /// 本番用
-//        priceLabel.text = "USD " + productPrice[indexPath.row] /// 本番用
-//        let url = URL(string: productImageUrl[indexPath.row]) /// 本番用
-        DispatchQueue.global().async {
-            do {
-                let imgData = try Data(contentsOf: url!)
-                DispatchQueue.main.async {
-                    imageView.image = UIImage(data: imgData)
-                    cell.setNeedsLayout()
+        switch index{
+        case 0:
+            productNameLabel.text = sampleName[indexPath.row] /// sample
+            priceLabel.text = "USD " + samplePrice[indexPath.row] /// sample
+            let url = URL(string: sampleImageUrl[indexPath.row]) /// sample
+    //        productNameLabel.text = productNames[indexPath.row] /// 本番用
+    //        priceLabel.text = "USD " + productPrice[indexPath.row] /// 本番用
+    //        let url = URL(string: productImageUrl[indexPath.row]) /// 本番用
+            DispatchQueue.global().async {
+                do {
+                    let imgData = try Data(contentsOf: url!)
+                    DispatchQueue.main.async {
+                        imageView.image = UIImage(data: imgData)
+                        cell.setNeedsLayout()
+                    }
+                }catch let err {
+                    print("Error : (err.localizedDescription)")
                 }
-            }catch let err {
-                print("Error : (err.localizedDescription)")
             }
+        case 1:
+            productNameLabel.text = "hai "/// sample
+            priceLabel.text = "USD " + String(indexPath.row) /// sample
+            let url = URL(string: sampleImageUrl[0]) /// sample
+    //        productNameLabel.text = productNames[indexPath.row] /// 本番用
+    //        priceLabel.text = "USD " + productPrice[indexPath.row] /// 本番用
+    //        let url = URL(string: productImageUrl[indexPath.row]) /// 本番用
+            DispatchQueue.global().async {
+                do {
+                    let imgData = try Data(contentsOf: url!)
+                    DispatchQueue.main.async {
+                        imageView.image = UIImage(data: imgData)
+                        cell.setNeedsLayout()
+                    }
+                }catch let err {
+                    print("Error : (err.localizedDescription)")
+                }
+            }
+        default:
+            print("error")
         }
+        
+//        productNameLabel.text = sampleName[indexPath.row] /// sample
+//        priceLabel.text = "USD " + samplePrice[indexPath.row] /// sample
+//        let url = URL(string: sampleImageUrl[indexPath.row]) /// sample
+////        productNameLabel.text = productNames[indexPath.row] /// 本番用
+////        priceLabel.text = "USD " + productPrice[indexPath.row] /// 本番用
+////        let url = URL(string: productImageUrl[indexPath.row]) /// 本番用
+//        DispatchQueue.global().async {
+//            do {
+//                let imgData = try Data(contentsOf: url!)
+//                DispatchQueue.main.async {
+//                    imageView.image = UIImage(data: imgData)
+//                    cell.setNeedsLayout()
+//                }
+//            }catch let err {
+//                print("Error : (err.localizedDescription)")
+//            }
+//        }
 
 
         return cell
@@ -469,9 +525,22 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
     
     func collectionView(_ collectionView: UICollectionView,
                               didSelectItemAt indexPath: IndexPath) {
+        
+        switch index{
+        case 0:
+            // move to link of product
+            guard let url = URL(string: sampleUrl[indexPath.row]) else { return }
+            UIApplication.shared.open(url)
+        case 1:
+            // move to link of product
+            guard let url = URL(string: sampleUrl[0]) else { return }
+            UIApplication.shared.open(url)
+        default:
+            print("error")
+        }
         // move to link of product
-        guard let url = URL(string: sampleUrl[indexPath.row]) else { return }
-        UIApplication.shared.open(url)
+//        guard let url = URL(string: sampleUrl[indexPath.row]) else { return }
+//        UIApplication.shared.open(url)
     }
     
     @IBAction func backBtnAction(_ sender: Any) {
@@ -640,6 +709,12 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
                 print("add done")
             }
         }
+    }
+    
+    @IBAction func ValueChanged(_ sender: UISegmentedControl) {
+        index = segmented.selectedSegmentIndex
+        self.searchedCollectionView.reloadData()
+        print("seg")
     }
 }
 

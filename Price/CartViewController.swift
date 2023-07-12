@@ -60,6 +60,11 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         totalProductLabel.text = "Total " + String(totalProduct) + " Items"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        cartCollectionView.reloadData()
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return products.count

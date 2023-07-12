@@ -115,11 +115,11 @@
 				64A6A12E2A55C1A400CA3BA2 /* CategoryViewController.swift */,
 				64D0006B2A4155EA002FE32C /* ComparePriceViewController.swift */,
 				64C5FD812A5EC10F006F45F2 /* CartViewController.swift */,
+				645495562A5A954E0052A2E9 /* ProductInfo.swift */,
 				64D0006D2A4167A3002FE32C /* RegisterViewController.swift */,
 				64D0006F2A416BA1002FE32C /* GoogleService-Info.plist */,
 				64D000862A427A74002FE32C /* LoginViewController.swift */,
 				64D000842A417B9A002FE32C /* ProductListViewController.swift */,
-				645495562A5A954E0052A2E9 /* ProductInfo.swift */,
 			);
 			path = Price;
 			sourceTree = "<group>";
