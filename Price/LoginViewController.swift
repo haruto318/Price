@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
                     print("Completed reginteration email:" + email)
                     // when login success, move to ProductListViewController
                     let storyboard: UIStoryboard = self.storyboard!
-                    let next = storyboard.instantiateViewController(withIdentifier: "ProductListViewController")
+                    let next = storyboard.instantiateViewController(withIdentifier: "visitHome")
                     self.present(next, animated: true, completion: nil)
                     
                 } else if let error = error {

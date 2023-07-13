@@ -47,16 +47,16 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        var totalPrice: Float = 0
+        var totalPrice: Int = 0
         var totalProduct: Int = 0
         
         for product in products {
             print(product.price)
-            totalPrice += Float(product.price)!
+            totalPrice += Int(product.price)!
             totalProduct += product.num
         }
         
-        totalPriceLabel.text = "USD " + String(totalPrice)
+        totalPriceLabel.text = String(totalPrice) + " yen"
         totalProductLabel.text = "Total " + String(totalProduct) + " Items"
         cartCollectionView.reloadData()
     }
@@ -84,7 +84,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         let productNameLabel = cell.contentView.viewWithTag(2) as! UILabel
         productNameLabel.text = products[indexPath.row].name
         let productPriceLabel = cell.contentView.viewWithTag(3) as! UILabel
-        productPriceLabel.text = "USD " + products[indexPath.row].price
+        productPriceLabel.text = products[indexPath.row].price + "yen"
         let productaNumLabel = cell.contentView.viewWithTag(4) as! UILabel
         productaNumLabel.text = String(products[indexPath.row].num)
         let container = cell.contentView.viewWithTag(5) as! UIView

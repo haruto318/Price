@@ -15,7 +15,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var registerAddressTextField: UITextField!
     @IBOutlet weak var loginEmailTextField: UITextField!
     @IBOutlet weak var loginPasswordTextField: UITextField!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,7 +45,7 @@ class RegisterViewController: UIViewController {
                             print("Completed reginteration name:" + name)
                             // ③ when success, move to ProductListViewController
                             let storyboard: UIStoryboard = self.storyboard!
-                            let next = storyboard.instantiateViewController(withIdentifier: "ProductListViewController")
+                            let next = storyboard.instantiateViewController(withIdentifier: "visitHome")
                                 self.present(next, animated: true, completion: nil)
                         }
                     })

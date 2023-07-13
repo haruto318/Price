@@ -58,6 +58,66 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
     var productPrice: [String] = [] /// 本番
     var productImageUrl: [String] = [] /// 本番
     
+    let iphonePhysicalShopName: [String] = ["Apple Kyoto",
+                                        "Apple Shinsaibashi",
+                                        "Rakuten Mobile Kyoto Shijo",
+                                        "Softbank Kyotoshijodori",
+                                        "BIC CAMERA Nanba Store",
+                                        "Yodobashi Camera Multimedia Kyoto",
+                                        "Docomo Kyoto Station",
+                                        "EDION KYOTO SHIJO KAWARAMACHI"]
+    let iphonePhysicalUrl: [String] = ["https://maps.app.goo.gl/BNiJY6aFBs1EzBRP7?g_st=ic",
+                                       "https://maps.app.goo.gl/8yx6jMp6Pcy1cdHW9?g_st=ic",
+                                       "https://goo.gl/maps/ccyBQgwTUKyEUayD9",
+                                       "https://goo.gl/maps/tq2EdLAEjDDC3kd76",
+                                       "https://goo.gl/maps/s1vwm4XCE1dgktv78",
+                                       "https://goo.gl/maps/8dBz96rHDs6hbDUb7",
+                                       "https://goo.gl/maps/ZGC2q87FNLSWfv7p9",
+                                       "https://goo.gl/maps/Xqvdb7NBjDQRdq3t5"]
+    let iphonePhysicalPrice: [String] = ["119800", "119800", "120910", "140400", "119800", "119800", "119800", "119790"]
+    let iphonePhysicalImageUrl: [String] = ["https://network.mobile.rakuten.co.jp/assets/img/product/iphone/iphone-14/pht-device-02.png?230308",
+                                            "https://network.mobile.rakuten.co.jp/assets/img/product/iphone/iphone-14/pht-device-02.png?230308",
+                                           "https://network.mobile.rakuten.co.jp/assets/img/product/iphone/iphone-14/pht-device-02.png?230308",
+                                            "https://network.mobile.rakuten.co.jp/assets/img/product/iphone/iphone-14/pht-device-02.png?230308",
+                                            "https://network.mobile.rakuten.co.jp/assets/img/product/iphone/iphone-14/pht-device-02.png?230308",
+                                            "https://network.mobile.rakuten.co.jp/assets/img/product/iphone/iphone-14/pht-device-02.png?230308",
+                                            "https://network.mobile.rakuten.co.jp/assets/img/product/iphone/iphone-14/pht-device-02.png?230308",
+                                            "https://network.mobile.rakuten.co.jp/assets/img/product/iphone/iphone-14/pht-device-02.png?230308"]
+    
+    let rolandPhysicalShopName: [String] = ["BIC CAMERA Nanba Store",
+                                            "Yodobashi Camera Multimedia Kyoto",
+                                            "HARD OFF",
+                                            "Tenrigakki",
+                                            "BIGBOSS Kyoto",
+                                            "JEUGIA Sanjo Main Store Piano Salon",
+                                            "Asahido Gakki",
+                                            "Watanabe Gakki Kyoto"]
+    let rolandPhysicalUrl: [String] = ["https://goo.gl/maps/s1vwm4XCE1dgktv78",
+                                       "https://goo.gl/maps/wAXy4iWCqYYfUvBB8",
+                                       "https://maps.app.goo.gl/49jQMGS9gWC62wNH6?g_st=ic",
+                                       "https://goo.gl/maps/MHtA9bSeoftciWFD7",
+                                       "https://maps.app.goo.gl/rQpFhcvPXZxGTzoV9?g_st=ic",
+                                       "https://goo.gl/maps/7AXGXfu6gBZC7cHM9",
+                                       "https://goo.gl/maps/JE1zREtoAHtuofz69",
+                                       "https://goo.gl/maps/vEsm3TXNBWXN14Ss9"]
+    let rolandPhysicalPrice: [String] = ["88000",
+                                         "90000",
+                                         "98000",
+                                         "92000",
+                                         "95000",
+                                         "93000",
+                                         "96000",
+                                         "89000"]
+    let rolandPhysicalImageUrl: [String] = ["https://electronicemporium.in/wp-content/uploads/2021/05/2000.jpeg",
+                                            "https://electronicemporium.in/wp-content/uploads/2021/05/2000.jpeg",
+                                            "https://electronicemporium.in/wp-content/uploads/2021/05/2000.jpeg",
+                                            "https://electronicemporium.in/wp-content/uploads/2021/05/2000.jpeg",
+                                            "https://electronicemporium.in/wp-content/uploads/2021/05/2000.jpeg",
+                                            "https://electronicemporium.in/wp-content/uploads/2021/05/2000.jpeg",
+                                            "https://electronicemporium.in/wp-content/uploads/2021/05/2000.jpeg",
+                                            "https://electronicemporium.in/wp-content/uploads/2021/05/2000.jpeg"]
+
+    
     let sampleName: [String] = ["Casio",
                                 "Casio",
                                 "Casio",
@@ -382,7 +442,7 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
     
     let sampleImageUrl: [String] = ["https://m.media-amazon.com/images/I/81bXL4Y6XXL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51yV7Ca-IIL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/510T962DtNL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71lyh92liiL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81Bq9T6Vk-L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81SkKZjDDyL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/91APJ9+qs2L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61AepCrYDOL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71F6fyefIGL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81ZP4QF1qCL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71xSYnvg7OL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51VG5cWFoCL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51jzaIqrKNL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/811OLK4PV+L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71lG7br7k1L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81BmJymxqLL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71RdP+pYfbL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81dVjlmIgUL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71sMS5i3wxL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/91DRCHFCw0L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71aqv9U7oYL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/91t51u4kDpL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/718AVhhc1GL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71rxMdEC2KL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/41tAjmmEWyL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61u6FrBLweL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81Pnn76U1kL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61I4-4bPxjS._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81JVXUTHKVL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61M5EMiKYGL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61GWeXVQSdL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81PPYtQNSWL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71rT69t8GVL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61edry5rsxL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81TCoSpGnPL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81wWSBDKZpL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81SNtMRH2dL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71NrPRCvFRL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/7121lR-otMS._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71mewE+svdL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71S-CCwawqL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61XdkEwY5wL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51wAVCggW2L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71+BP1gTN2L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71JfGjxM5lL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71u9dpDC9HL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71sj7eCYG9L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61srikhJ1IL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71sj7eCYG9L._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61srikhJ1IL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/615TwAMB9xL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/716QBWsdfuL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71LLdM2d7QL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/6159sqOpeSL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/41B0bJPcVPL._AC_UL1000_QL65_.jpg", "https://m.media-amazon.com/images/I/81fuTaD5wzL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/619Vk5pRVjL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61AhRNbrHBL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71Sbjr41u5L._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81+kaX84rEL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61HbivsTv0L._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61QeNWSSHaL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71pBtMd2vjL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71oXNZtH7bS._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61IX7x2YwZL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71jeOTTKRmL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71kmaM6mZvL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81E-Lr-ytLL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/715VRasD1gL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61x47Alb+WL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81ljgROP1eL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61WZfhUL3sL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61xNup8vYaL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61zN+q26d6L._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81ihNhmMQxL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71eeeyUk2eL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71StX0FceBL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81VTDAH0ESL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61YvYiLUxDS._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81OXf0ujDsL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71dvbXsH+VL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81t0KQkVwpS._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71HvekeiFkL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81H5GpCx2hL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71G3W5z0F2L._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/91mZ4eCUK7L._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61wj7YyOmGL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71qoQVetqhL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71x+MLEWtoL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71RPQNOyz9L._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81Fz3QXbeDL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71RA4WUklbL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71cB+13yVmL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81w8q+NKBrL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61MgaIRCQKL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81Vge+DyWlL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/9183p+ExCVL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71HvekeiFkL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61YvYiLUxDS._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71CQ9ttRVUL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61lk-YxTUAL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71VNyRYDQeL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71u+AkEZZpL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71Q-hS9O0LL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81aPPs3+hSL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71kzslUzjHL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71l6cnvwnXL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71QDv-ByTxL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71-+WIi-X3L._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71s0PeB7iaL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81JIcyPY3CL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61zRr8F0u9L._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61CZSoSnVPL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71nbXdvdGfL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81K7PRwX9oL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/713nE6NPjLL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71tok+TONdL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71LFOpzmgtL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71BM5VNe8mL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71d-h1sP17L._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61hwd7aAmnL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81QyjCYpxcL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71gyKE38oHL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/5116juOrQcL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61em2RBifsL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71J1J+zOePL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61IyreFHFFL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61MgaIRCQKL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81JXZ9C9AuL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81iAfA+bwbL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81c8sCXvNWL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81f7bPEzlHL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61jICDucaeL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/61HYWEYgzbL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71CLerpVfKL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71771rQIwfL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/51zTnb8lbXL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/71G4lmAU6-L._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81KEqfAvWhL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/51oppDaRaHL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/813etxOA6JL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/916acEhBkcL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/51G59GLOfWL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/81xD1809wmL._AC_UL1200_QL65_.jpg", "https://m.media-amazon.com/images/I/813etxOA6JL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/916acEhBkcL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51G59GLOfWL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81xD1809wmL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71ypvY2ZQmL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81+cXdxM7OL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71a8NGzy1uL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71f2XEH7CcL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81l6aV6sK2L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81py4q3x+uL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61Sl+xoVHoL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61Y1WHUaQ9L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/613741WClyS._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71Meq7sFVqL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81W2+y0K0uL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81OF7rBzZfL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71aWDnZOfLL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81yU+L0BNGL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71RWpkCMBYL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61hapdZW7xL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71am7ArwnXL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/917G0+Er8sL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71Q7JMrurtL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81mTD7why6L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/710OsyQGJDL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81P69iPswLL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71BoZgQ4QjS._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81Z6EfHN70L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61YkVSUyCVL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51u9v2NTd0L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61b0EyFvxbL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61y-zJzm1ZL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71KiaQjhyiL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/611zqAUqoDL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/811tVOXcjJL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71JSM9kTEwS._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61+UWR8ByrL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/615pfQueyyL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/8125l1CSd2L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71rLtVc+GpL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61aaG6INteL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/91d45PCEhqL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81CglBHsEnL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/612yLVoCU+L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61uYcnUlz8L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71IgiZ2pkjL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71VjM5LOeYL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51kHl9OR0+L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/8170BjKBHsL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71am7ArwnXL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71Q7JMrurtL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61N28Hap3iL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81ybtKRxonL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71lkRLnpYuL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81P69iPswLL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71l-7BQsgLL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/617FUjl3EXL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61rlZhEPK3L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61YkVSUyCVL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71vfaITrxlL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61ayT3DukTL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71lo++IOYjL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/611zqAUqoDL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61+UWR8ByrL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51T7yplyxVL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81WmCMctvsL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/416l5kCgyGL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61aaG6INteL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71vv3WOqV+L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/91d45PCEhqL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71hx38M3y+L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81E2IhbmPBL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/710fvkNdz6L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61uYcnUlz8L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81EIvU4vurL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71XZ5w+uy2L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61aIQEzzz3L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51h43yWQbfL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71kdzMDdDKL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61ZEU5Ah07L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61sDdNulhxL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71sl1tAThyL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81RkCtTJ8YL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71+OK9sMvSL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81ttGCzlr4S._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61EDyRTFESL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81KNkAYIcHL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/716JHZbxb5L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71mqz0ymh9L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61c+OqsCQvL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81sOchGR74L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51bZ8fDC-pL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/710mqDQFhfL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71-Y+hPucLL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71NG5grsU7L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61k0HOByv8L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/713V95oK3QL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81l7jOfrCRL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71OuSHJFghL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71tgo-p2lHL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61HlCcVkMcL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51h43yWQbfL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71NG5grsU7L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71kdzMDdDKL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61ZEU5Ah07L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/619l+9g92kL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71xBTNyJw1L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71rjKFT3DwL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71cl-H53n1L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71d-h1sP17L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71sl1tAThyL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71+OK9sMvSL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/614eWVlmO9L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81J1cRng+8L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71ce13fZdAL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71SEd7XDFhL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71Gshom7i1L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51KwfkpLvOL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61WRQ5WXRUL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81ttGCzlr4S._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81KNkAYIcHL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/716JHZbxb5L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/5194ncpe5IL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81sOchGR74L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51bZ8fDC-pL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61kAqcLvUIS._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81YRfx-zvhL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61I9hB+aEkL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81WZc9a2X2L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71-Y+hPucLL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61p9wEsgs4S._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61k0HOByv8L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/613pEi4kmyL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71vYX6+GJbL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/91Mm5gxO9qL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61VkC7T0sCL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61rwFTnju6L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71WeWhA-szL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71GmfA43bmL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51RKt+qcH4S._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61QcYWhxbbL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81ga-Taw1OL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61TXtLYpuDL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61z5oOk5fzL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71BCR7zTpVL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81j3wKFtlpL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81QyjCYpxcL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71k5sxbk0RL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71WtvGEvu5L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/91pPf47eyLL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81TFpawF2HL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/710vuL3j5LL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61LCsAWrpWL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51LlFQNWNUL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71mFZbpG1NL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81XXvNBEYfL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51f5l7j8PUL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71BSa9KwTEL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/51LlFQNWNUL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61HlCcVkMcL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81XXvNBEYfL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/619l+9g92kL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81YdzPXZ5+L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/61UpqtH8FPL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71+AoVcynNL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/711gRDicyML._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71-jNfNTBYL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71y+Gb3N-hL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/415bAIQTxaL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81ktsNMvIKL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81wYSrZjtiL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/81AED8aXVFL._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/614eWVlmO9L._AC_UL960_QL65_.jpg", "https://m.media-amazon.com/images/I/71CICwJc2YL._AC_UL960_QL65_.jpg"] /// sample
     
-    var keyword: String = "watch"
+    var keyword: String = "iPhone 14"
     
     @IBOutlet weak var searchedCollectionView: UICollectionView!
     
@@ -431,16 +491,25 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
         
         segmented.addTarget(self, action: #selector(ValueChanged), for: .valueChanged)
         
-//        startAPI()　/// 本番用
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        startAPI(keyword: keyword) /// 本番用
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch index{
         case 0:
-            // return productUrl.count /// 本番用
-            return sampleUrl.count
+             return productUrl.count /// 本番用
+//            return sampleUrl.count/// sample
         case 1:
+            if keyword.lowercased().contains("iphone"){
+                return iphonePhysicalUrl.count
+            }
+            if keyword.lowercased().contains("roland"){
+                return rolandPhysicalUrl.count
+            }
             return 0
         default:
             print("error")
@@ -460,14 +529,17 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
         
         let imageView = cell.contentView.viewWithTag(3) as! UIImageView
         
+        let shopNameLabel = cell.contentView.viewWithTag(4) as! UILabel
+        
         switch index{
         case 0:
-            productNameLabel.text = sampleName[indexPath.row] /// sample
-            priceLabel.text = "USD " + samplePrice[indexPath.row] /// sample
-            let url = URL(string: sampleImageUrl[indexPath.row]) /// sample
-    //        productNameLabel.text = productNames[indexPath.row] /// 本番用
-    //        priceLabel.text = "USD " + productPrice[indexPath.row] /// 本番用
-    //        let url = URL(string: productImageUrl[indexPath.row]) /// 本番用
+//            productNameLabel.text = sampleName[indexPath.row] /// sample
+//            priceLabel.text = "USD " + samplePrice[indexPath.row] /// sample
+//            let url = URL(string: sampleImageUrl[indexPath.row]) /// sample
+            productNameLabel.text = productNames[indexPath.row] /// 本番用
+            priceLabel.text = productPrice[indexPath.row] + "yen"  /// 本番用
+            let url = URL(string: productImageUrl[indexPath.row]) /// 本番用
+            shopNameLabel.text = " " ///  本番
             DispatchQueue.global().async {
                 do {
                     let imgData = try Data(contentsOf: url!)
@@ -480,21 +552,37 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
                 }
             }
         case 1:
-            productNameLabel.text = "hai "/// sample
-            priceLabel.text = "USD " + String(indexPath.row) /// sample
-            let url = URL(string: sampleImageUrl[0]) /// sample
-    //        productNameLabel.text = productNames[indexPath.row] /// 本番用
-    //        priceLabel.text = "USD " + productPrice[indexPath.row] /// 本番用
-    //        let url = URL(string: productImageUrl[indexPath.row]) /// 本番用
-            DispatchQueue.global().async {
-                do {
-                    let imgData = try Data(contentsOf: url!)
-                    DispatchQueue.main.async {
-                        imageView.image = UIImage(data: imgData)
-                        cell.setNeedsLayout()
+            if keyword.lowercased().contains("iphone"){
+                shopNameLabel.text = iphonePhysicalShopName[indexPath.row]
+                productNameLabel.text = "iPhone 14 128GB"
+                priceLabel.text = iphonePhysicalPrice[indexPath.row] + "yen" /// sample
+                let url = URL(string: iphonePhysicalImageUrl[indexPath.row]) /// sample
+                DispatchQueue.global().async {
+                    do {
+                        let imgData = try Data(contentsOf: url!)
+                        DispatchQueue.main.async {
+                            imageView.image = UIImage(data: imgData)
+                            cell.setNeedsLayout()
+                        }
+                    }catch let err {
+                        print("Error : (err.localizedDescription)")
                     }
-                }catch let err {
-                    print("Error : (err.localizedDescription)")
+                }
+            } else if keyword.lowercased().contains("roland"){
+                shopNameLabel.text = rolandPhysicalShopName[indexPath.row]
+                productNameLabel.text = "Roland FP-30X"
+                priceLabel.text = rolandPhysicalPrice[indexPath.row] + "yen" /// sample
+                let url = URL(string: rolandPhysicalImageUrl[indexPath.row]) /// sample
+                DispatchQueue.global().async {
+                    do {
+                        let imgData = try Data(contentsOf: url!)
+                        DispatchQueue.main.async {
+                            imageView.image = UIImage(data: imgData)
+                            cell.setNeedsLayout()
+                        }
+                    }catch let err {
+                        print("Error : (err.localizedDescription)")
+                    }
                 }
             }
         default:
@@ -532,9 +620,18 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
             guard let url = URL(string: sampleUrl[indexPath.row]) else { return }
             UIApplication.shared.open(url)
         case 1:
-            // move to link of product
-            guard let url = URL(string: sampleUrl[0]) else { return }
-            UIApplication.shared.open(url)
+            
+            
+            if keyword.lowercased().contains("iphone"){
+                guard let url = URL(string: iphonePhysicalUrl[indexPath.row]) else { return }
+                UIApplication.shared.open(url)
+            } else if keyword.lowercased().contains("roland"){
+                guard let url = URL(string: rolandPhysicalUrl[indexPath.row]) else { return }
+                UIApplication.shared.open(url)
+            }
+//            // move to link of product
+//            guard let url = URL(string: sampleUrl[0]) else { return }
+//            UIApplication.shared.open(url)
         default:
             print("error")
         }
@@ -547,53 +644,55 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
         self.dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func startAPI(){
-            let url = URL(string: base)
-            
-            if keywordField.text != nil{
-                let headers = [
-                    "accept": "application/json",
-                    "content-type": "application/json"
-                ]
-                let parameters = [
-                    "source": "amazon",
-                    "country": "us",
-                    "topic": "search_results",
-                    "key": "term",
-                    "values": "watch",
+    @IBAction func startAPI(keyword: String){
+        let url = URL(string: base)
+        
+        print(keyword)
+        if keyword != nil{
+            print(keyword)
+            let headers = [
+                "accept": "application/json",
+                "content-type": "application/json"
+            ]
+            let parameters = [
+                "source": "amazon",
+                "country": "jp",
+                "topic": "search_results",
+                "key": "term",
+                "values": "\(keyword)",
                 //              "values": "\(keywordField.text!)",
-                    "max_pages": "10",
-                    "max_age": "1440",
-                    "timeout": "5",
-                    "token": token
-                ] as [String : Any]
-
-                let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
-
-                let request = NSMutableURLRequest(url: NSURL(string: "https://api.priceapi.com/v2/jobs?token=\(token)")! as URL,
-                                                                    cachePolicy: .useProtocolCachePolicy,
-                                                                timeoutInterval: 10.0)
-                request.httpMethod = "POST"
-                request.allHTTPHeaderFields = headers
-                request.httpBody = postData as Data
-
-                let session = URLSession.shared
-
-                let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in guard let data = data else {return}
-                    do{
-                        let requestJSON = try JSONDecoder().decode(initialRequestJSON.self, from: data) //make json parsing easy
-                        if requestJSON.status == "new"{
-                            print(requestJSON.job_id)
-                            self.isJobFinished(requestJSON.job_id)
-                        }
-                    }catch{
-                        print("Error getBestPrice")
+                "max_pages": "10",
+                "max_age": "1440",
+                "timeout": "5",
+                "token": token
+            ] as [String : Any]
+            
+            let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+            
+            let request = NSMutableURLRequest(url: NSURL(string: "https://api.priceapi.com/v2/jobs?token=\(token)")! as URL,
+                                              cachePolicy: .useProtocolCachePolicy,
+                                              timeoutInterval: 10.0)
+            request.httpMethod = "POST"
+            request.allHTTPHeaderFields = headers
+            request.httpBody = postData as Data
+            
+            let session = URLSession.shared
+            
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in guard let data = data else {return}
+                do{
+                    let requestJSON = try JSONDecoder().decode(initialRequestJSON.self, from: data) //make json parsing easy
+                    if requestJSON.status == "new"{
+                        print(requestJSON.job_id)
+                        self.isJobFinished(requestJSON.job_id)
                     }
-                })
-
-                dataTask.resume()
-            }
+                }catch{
+                    print("Error getBestPrice")
+                }
+            })
+            
+            dataTask.resume()
         }
+    }
     
     func isJobFinished(_ id: String) -> Void{
         var isFinished: Bool = false
@@ -788,12 +887,36 @@ extension ComparePriceViewController: ContextMenuDelegate {
                 
         } else if recognizer.state == UIGestureRecognizer.State.began  {
             // 長押しされた場合の処理
+            
+            switch index{
+            case 0:
+                // move to link of product
+                addName = productNames[indexPath!.row] /// sample用
+                addPrice = productPrice[indexPath!.row] /// sample用
+                addImageUrl = productImageUrl[indexPath!.row] /// sample用
+                addUrl = productUrl[indexPath!.row]
+            case 1:
+                // move to link of product
+//                addName = sampleName[indexPath!.row] /// sample用
+//                addPrice = samplePrice[indexPath!.row] /// sample用
+//                addImageUrl = sampleImageUrl[indexPath!.row] /// sample用
+//                addUrl = sampleUrl[indexPath!.row]
+                
+                if keyword.lowercased().contains("iphone"){
+                    addName = "iPhone 14 128GB" /// sample用
+                    addPrice = iphonePhysicalPrice[indexPath!.row] /// sample用
+                    addImageUrl = iphonePhysicalImageUrl[indexPath!.row] /// sample用
+                    addUrl = iphonePhysicalUrl[indexPath!.row]
+                } else if keyword.lowercased().contains("roland"){
+                    addName = "Roland FP-30X" /// sample用
+                    addPrice = rolandPhysicalPrice[indexPath!.row] /// sample用
+                    addImageUrl = rolandPhysicalImageUrl[indexPath!.row] /// sample用
+                    addUrl = rolandPhysicalUrl[indexPath!.row]
+                }
+            default:
+                print("error")
+            }
             print(indexPath?.row)
-            addName = sampleName[indexPath!.row] /// sample用
-            addPrice = samplePrice[indexPath!.row] /// sample用
-            addImageUrl = sampleImageUrl[indexPath!.row] /// sample用
-            addUrl = sampleUrl[indexPath!.row]
-            print(sampleName[indexPath!.row])
 //          let addName = productNames[indexPath?.row] /// 本番用
 //          let addPrice = "USD " + productPrice[indexPath?.row] /// 本番用
 //          let addUrl = URL(string: productImageUrl[indexPath?.row]) /// 本番用
