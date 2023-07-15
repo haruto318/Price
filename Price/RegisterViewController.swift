@@ -7,57 +7,86 @@
 
 import UIKit
 import Firebase
+//import FirebaseCore
+import FirebaseFirestore
 
 class RegisterViewController: UIViewController {
     @IBOutlet weak var registerEmailTextField: UITextField!
     @IBOutlet weak var registerPasswordTextField: UITextField!
     @IBOutlet weak var registerNameTextField: UITextField!
-    @IBOutlet weak var registerAddressTextField: UITextField!
-    @IBOutlet weak var loginEmailTextField: UITextField!
-    @IBOutlet weak var loginPasswordTextField: UITextField!
+    @IBOutlet var signInBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        registerEmailTextField.layer.borderColor = UIColor.clear.cgColor
+        registerEmailTextField.layer.borderWidth = 1.0
+        registerEmailTextField.layer.cornerRadius = 10
+        registerEmailTextField.clipsToBounds = true
+        registerEmailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        
+        registerPasswordTextField.layer.borderColor = UIColor.clear.cgColor
+        registerPasswordTextField.layer.borderWidth = 1.0
+        registerPasswordTextField.layer.cornerRadius = 10
+        registerPasswordTextField.clipsToBounds = true
+        registerPasswordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        
+        registerNameTextField.layer.borderColor = UIColor.clear.cgColor
+        registerNameTextField.layer.borderWidth = 1.0
+        registerNameTextField.layer.cornerRadius = 10
+        registerNameTextField.clipsToBounds = true
+        registerNameTextField.attributedPlaceholder = NSAttributedString(string: "User Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        
+        signInBtn.layer.borderColor = UIColor.clear.cgColor
+        signInBtn.layer.borderWidth = 1.0
+        signInBtn.layer.cornerRadius = 10
+        signInBtn.clipsToBounds = true
+        
         // Do any additional setup after loading the view.
     }
-    
+
     @IBAction func tapRegisterButton(_ sender: Any) {
         if let email = registerEmailTextField.text,
-           let password = registerPasswordTextField.text,
-           let name = registerNameTextField.text,
-           let address = registerAddressTextField.text{
-            // Create account with email and password on FirebaseAuth①FirebaseAuthにemailとpasswordでアカウントを作成する
-                Auth.auth().createUser(withEmail: email, password: password, completion: { (result, error) in
-                if let user = result?.user {
-                    print("Completed reginteration uid:" + user.uid)
-                    // Create data by uid which login to usercollection of Firestore
-                    Firestore.firestore().collection("store").document(user.uid).setData([
-                        "name": name, "address": address
-                    ], completion: { error in
-                        if let error = error {
-                            // when creating data fail
-                            print("Firestore registeration failed " + error.localizedDescription)
-                            let dialog = UIAlertController(title: "Firestore registeration failed", message: error.localizedDescription, preferredStyle: .alert)
+                    let password = registerPasswordTextField.text,
+                    let name = registerNameTextField.text {
+                    // ①FirebaseAuthにemailとpasswordでアカウントを作成する
+                    Auth.auth().createUser(withEmail: email, password: password, completion: { (result, error) in
+                        if let user = result?.user {
+                            print("ユーザー作成完了 uid:" + user.uid)
+                            // ②FirestoreのUsersコレクションにdocumentID = ログインしたuidでデータを作成する
+                            Firestore.firestore().collection("users").document(user.uid).setData([
+                                "name": name
+                            ], completion: { error in
+                                if let error = error {
+                                    // ②が失敗した場合
+                                    print("Firestore 新規登録失敗 " + error.localizedDescription)
+                                    let dialog = UIAlertController(title: "新規登録失敗", message: error.localizedDescription, preferredStyle: .alert)
+                                    dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                                    self.present(dialog, animated: true, completion: nil)
+                                } else {
+                                    print("ユーザー作成完了 name:" + name)
+                                    // ③成功した場合はTodo一覧画面に画面遷移を行う
+                                    let storyboard: UIStoryboard = self.storyboard!
+                                    let next = storyboard.instantiateViewController(withIdentifier: "toHome") as! UITabBarController
+                                    next.selectedIndex = 0
+//                                    self.navigationController?.pushViewController(next, animated: true)
+                                    next.modalPresentationStyle = .fullScreen
+                                    self.present(next, animated: true, completion: nil)
+                                }
+                            })
+                        } else if let error = error {
+                            // ①が失敗した場合
+                            print("Firebase Auth 新規登録失敗 " + error.localizedDescription)
+                            let dialog = UIAlertController(title: "新規登録失敗", message: error.localizedDescription, preferredStyle: .alert)
                             dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(dialog, animated: true, completion: nil)
-                        } else {
-                            print("Completed reginteration name:" + name)
-                            // ③ when success, move to ProductListViewController
-                            let storyboard: UIStoryboard = self.storyboard!
-                            let next = storyboard.instantiateViewController(withIdentifier: "visitHome")
-                                self.present(next, animated: true, completion: nil)
                         }
                     })
-                } else if let error = error {
-                    //when creating account fail
-                    print("Firebase Auth registeration failed " + error.localizedDescription)
-                    let dialog = UIAlertController(title: "registeration failed", message: error.localizedDescription, preferredStyle: .alert)
-                    dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(dialog, animated: true, completion: nil)
                 }
-            })
-        }
+    }
+    
+    @IBAction func tapMoveToLogin(){
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

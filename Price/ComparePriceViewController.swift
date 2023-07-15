@@ -617,7 +617,7 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
         switch index{
         case 0:
             // move to link of product
-            guard let url = URL(string: sampleUrl[indexPath.row]) else { return }
+            guard let url = URL(string: productUrl[indexPath.row]) else { return }
             UIApplication.shared.open(url)
         case 1:
             
@@ -838,10 +838,6 @@ extension ComparePriceViewController: ContextMenuDelegate {
                 print("編集が押された!")
             updateRealm(url: addUrl, name: addName, imageUrl: addImageUrl, price: addPrice)
             
-            case 1:
-                //同様です
-                print("削除が押された!")
-            
             default:
                 //ここはその他のセルがタップされた際に実行されます
                 break
@@ -923,10 +919,9 @@ extension ComparePriceViewController: ContextMenuDelegate {
                 
             //コンテキストメニューの内容を作成します
             let add = ContextMenuItemWithImage(title: "Add to Cart", image: UIImage(systemName: "cart")!)
-            let delete = ContextMenuItemWithImage(title: "削除", image: UIImage(systemName: "trash")!)
                 
          //コンテキストメニューに表示するアイテムを決定します
-            CM.items = [add, delete]
+            CM.items = [add]
         //表示します
             CM.showMenu(viewTargeted: searchedCollectionView.cellForItem(at: indexPath!)!,
                         delegate: self,

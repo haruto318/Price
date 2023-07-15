@@ -25,8 +25,12 @@
 		64D0006A2A4140BC002FE32C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D000692A4140BC002FE32C /* HomeViewController.swift */; };
 		64D0006C2A4155EA002FE32C /* ComparePriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D0006B2A4155EA002FE32C /* ComparePriceViewController.swift */; };
 		64D0006E2A4167A3002FE32C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D0006D2A4167A3002FE32C /* RegisterViewController.swift */; };
-		64D000852A417B9A002FE32C /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D000842A417B9A002FE32C /* ProductListViewController.swift */; };
 		64D000872A427A74002FE32C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D000862A427A74002FE32C /* LoginViewController.swift */; };
+		64F28B712A612751002448AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64F28B702A612751002448AE /* GoogleService-Info.plist */; };
+		64F28B742A6127F5002448AE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 64F28B732A6127F5002448AE /* FirebaseAuth */; };
+		64F28B762A6127F5002448AE /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 64F28B752A6127F5002448AE /* FirebaseDatabase */; };
+		64F28B782A6127F5002448AE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 64F28B772A6127F5002448AE /* FirebaseFirestore */; };
+		64F28B7A2A6127F5002448AE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 64F28B792A6127F5002448AE /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +48,8 @@
 		64D000692A4140BC002FE32C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		64D0006B2A4155EA002FE32C /* ComparePriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparePriceViewController.swift; sourceTree = "<group>"; };
 		64D0006D2A4167A3002FE32C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		64D000842A417B9A002FE32C /* ProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
 		64D000862A427A74002FE32C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		64F28B702A612751002448AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +60,12 @@
 				64C5FD7E2A5EB06D006F45F2 /* Realm in Frameworks */,
 				64C5FD802A5EB06D006F45F2 /* RealmSwift in Frameworks */,
 				64A6A12B2A55AA2900CA3BA2 /* Collections in Frameworks */,
+				64F28B7A2A6127F5002448AE /* FirebaseStorage in Frameworks */,
 				645495552A59B57A0052A2E9 /* SkeletonView in Frameworks */,
 				64A6A12D2A55AA2900CA3BA2 /* OrderedCollections in Frameworks */,
+				64F28B782A6127F5002448AE /* FirebaseFirestore in Frameworks */,
+				64F28B742A6127F5002448AE /* FirebaseAuth in Frameworks */,
+				64F28B762A6127F5002448AE /* FirebaseDatabase in Frameworks */,
 				64C5FD732A5E4906006F45F2 /* ContextMenuSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,7 +106,7 @@
 				645495562A5A954E0052A2E9 /* ProductInfo.swift */,
 				64D0006D2A4167A3002FE32C /* RegisterViewController.swift */,
 				64D000862A427A74002FE32C /* LoginViewController.swift */,
-				64D000842A417B9A002FE32C /* ProductListViewController.swift */,
+				64F28B702A612751002448AE /* GoogleService-Info.plist */,
 			);
 			path = Price;
 			sourceTree = "<group>";
@@ -126,6 +134,10 @@
 				64C5FD722A5E4906006F45F2 /* ContextMenuSwift */,
 				64C5FD7D2A5EB06D006F45F2 /* Realm */,
 				64C5FD7F2A5EB06D006F45F2 /* RealmSwift */,
+				64F28B732A6127F5002448AE /* FirebaseAuth */,
+				64F28B752A6127F5002448AE /* FirebaseDatabase */,
+				64F28B772A6127F5002448AE /* FirebaseFirestore */,
+				64F28B792A6127F5002448AE /* FirebaseStorage */,
 			);
 			productName = Price;
 			productReference = 6438CA8F2A305591003FDD2E /* Price.app */;
@@ -160,6 +172,7 @@
 				645495532A59B57A0052A2E9 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 				64C5FD712A5E4906006F45F2 /* XCRemoteSwiftPackageReference "ContextMenuSwift" */,
 				64C5FD7C2A5EB06D006F45F2 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				64F28B722A6127F5002448AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 6438CA902A305591003FDD2E /* Products */;
 			projectDirPath = "";
@@ -176,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6438CA9F2A305592003FDD2E /* LaunchScreen.storyboard in Resources */,
+				64F28B712A612751002448AE /* GoogleService-Info.plist in Resources */,
 				6438CA9C2A305592003FDD2E /* Assets.xcassets in Resources */,
 				6438CA9A2A305591003FDD2E /* Main.storyboard in Resources */,
 			);
@@ -190,7 +204,6 @@
 			files = (
 				64D0006C2A4155EA002FE32C /* ComparePriceViewController.swift in Sources */,
 				6438CA972A305591003FDD2E /* ViewController.swift in Sources */,
-				64D000852A417B9A002FE32C /* ProductListViewController.swift in Sources */,
 				645495572A5A954E0052A2E9 /* ProductInfo.swift in Sources */,
 				6438CA932A305591003FDD2E /* AppDelegate.swift in Sources */,
 				64D000872A427A74002FE32C /* LoginViewController.swift in Sources */,
@@ -348,6 +361,7 @@
 				DEVELOPMENT_TEAM = MQ38WHYXCG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Price/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KAGO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -376,6 +390,7 @@
 				DEVELOPMENT_TEAM = MQ38WHYXCG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Price/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KAGO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -450,6 +465,14 @@
 				minimumVersion = 10.41.0;
 			};
 		};
+		64F28B722A6127F5002448AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -482,6 +505,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 64C5FD7C2A5EB06D006F45F2 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		64F28B732A6127F5002448AE /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64F28B722A6127F5002448AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		64F28B752A6127F5002448AE /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64F28B722A6127F5002448AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		64F28B772A6127F5002448AE /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64F28B722A6127F5002448AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		64F28B792A6127F5002448AE /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64F28B722A6127F5002448AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

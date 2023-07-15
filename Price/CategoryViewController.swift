@@ -29,6 +29,9 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         valueField.layer.borderWidth = 1.0
         valueField.layer.cornerRadius = 22.5
         valueField.clipsToBounds = true
+        let centeredParagraphStyle = NSMutableParagraphStyle()
+        centeredParagraphStyle.alignment = .center
+        valueField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray, NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical // vertical scroll
