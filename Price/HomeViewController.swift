@@ -9,7 +9,7 @@ import UIKit
 import OrderedCollections
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
-    let electronicDict: OrderedDictionary = ["TV": UIImage(named: "tv"), "Speaker": UIImage(named: "speaker"), "headphone": UIImage(named: "headphone"), "laptop": UIImage(named: "laptop")]
+    let electronicDict: OrderedDictionary = ["TV": UIImage(named: "tv"), "Speaker": UIImage(named: "speaker"), "headphone": UIImage(named: "headphone"), "laptop": UIImage(named: "laptop"), "iPhone": UIImage(named: "iPhone14"), "Rolnad": UIImage(named: "Roland")]
     let clothesDict: OrderedDictionary = ["T-Shirt": UIImage(named: "shirt"), "Shoes": UIImage(named: "shoes"), "Sweater": UIImage(named: "sweater"), "Long_Shirt": UIImage(named: "longShirt")]
     let cosmeticDict: OrderedDictionary = ["Body_Oil": UIImage(named: "body_oil"), "Lipstick": UIImage(named: "lipstick"), "Mascara": UIImage(named: "mascara")]
     
@@ -126,6 +126,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let ComparePriceViewController = segue.destination as! ComparePriceViewController
             ComparePriceViewController.keyword = self.keyword
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
 }

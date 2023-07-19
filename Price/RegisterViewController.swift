@@ -10,7 +10,7 @@ import Firebase
 //import FirebaseCore
 import FirebaseFirestore
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var registerEmailTextField: UITextField!
     @IBOutlet weak var registerPasswordTextField: UITextField!
     @IBOutlet weak var registerNameTextField: UITextField!
@@ -19,18 +19,21 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.registerEmailTextField.delegate = self
         registerEmailTextField.layer.borderColor = UIColor.clear.cgColor
         registerEmailTextField.layer.borderWidth = 1.0
         registerEmailTextField.layer.cornerRadius = 10
         registerEmailTextField.clipsToBounds = true
         registerEmailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         
+        self.registerPasswordTextField.delegate = self
         registerPasswordTextField.layer.borderColor = UIColor.clear.cgColor
         registerPasswordTextField.layer.borderWidth = 1.0
         registerPasswordTextField.layer.cornerRadius = 10
         registerPasswordTextField.clipsToBounds = true
         registerPasswordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         
+        self.registerNameTextField.delegate = self
         registerNameTextField.layer.borderColor = UIColor.clear.cgColor
         registerNameTextField.layer.borderWidth = 1.0
         registerNameTextField.layer.cornerRadius = 10
@@ -87,6 +90,13 @@ class RegisterViewController: UIViewController {
     
     @IBAction func tapMoveToLogin(){
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        registerEmailTextField.resignFirstResponder()
+        registerPasswordTextField.resignFirstResponder()
+        registerNameTextField.resignFirstResponder()
+        return true
     }
 
 }

@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginEmailTextField: UITextField!
     @IBOutlet weak var loginPasswordTextField: UITextField!
     @IBOutlet var signInBtn: UIButton!
@@ -16,12 +16,14 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.loginEmailTextField.delegate = self
         loginEmailTextField.layer.borderColor = UIColor.clear.cgColor
         loginEmailTextField.layer.borderWidth = 1.0
         loginEmailTextField.layer.cornerRadius = 10
         loginEmailTextField.clipsToBounds = true
         loginEmailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         
+        self.loginPasswordTextField.delegate = self
         loginPasswordTextField.layer.borderColor = UIColor.clear.cgColor
         loginPasswordTextField.layer.borderWidth = 1.0
         loginPasswordTextField.layer.cornerRadius = 10
@@ -64,6 +66,12 @@ class LoginViewController: UIViewController {
 
     @IBAction func tapMoveToRegister(){
         self.performSegue(withIdentifier: "toRegister", sender: nil)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        loginEmailTextField.resignFirstResponder()
+        loginPasswordTextField.resignFirstResponder()
+        return true
     }
 
 }
