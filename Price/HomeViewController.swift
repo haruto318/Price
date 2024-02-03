@@ -9,6 +9,8 @@ import UIKit
 import OrderedCollections
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    ///sample image for home view
     let electronicDict: OrderedDictionary = ["TV": UIImage(named: "tv"), "Speaker": UIImage(named: "speaker"), "headphone": UIImage(named: "headphone"), "laptop": UIImage(named: "laptop"), "iPhone": UIImage(named: "iPhone14"), "Rolnad": UIImage(named: "Roland")]
     let clothesDict: OrderedDictionary = ["T-Shirt": UIImage(named: "shirt"), "Shoes": UIImage(named: "shoes"), "Sweater": UIImage(named: "sweater"), "Long_Shirt": UIImage(named: "longShirt")]
     let cosmeticDict: OrderedDictionary = ["Body_Oil": UIImage(named: "body_oil"), "Lipstick": UIImage(named: "lipstick"), "Mascara": UIImage(named: "mascara")]
@@ -43,9 +45,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         electronicCollectionView.collectionViewLayout = layout
         clothesCollectionView.collectionViewLayout = layout
         cosmeticCollectionView.collectionViewLayout = layout
-        
-//        scrollView.contentSize = contentsView.frame.size
-//        scrollView.flashScrollIndicators()
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -85,6 +84,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return UICollectionViewCell()
     }
     
+    // Action for the electronics category button
     @IBAction func electronicButton(){
         selectedCategoryDict = electronicDict
         selectedCategoryName = "ELECTRONICS"
@@ -93,6 +93,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    // Action for the clothes category button
     @IBAction func clotheButton(){
         selectedCategoryDict = clothesDict
         selectedCategoryName = "CLOTHES"
@@ -101,6 +102,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    // Action for the cosmetics category button
     @IBAction func cosmeticButton(){
         selectedCategoryDict = cosmeticDict
         selectedCategoryName = "COSMETICS"
@@ -109,6 +111,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    // Action for starting the search
     @IBAction func searchStart(){
         if valueField.text != nil{
             keyword = valueField.text!
@@ -116,6 +119,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    // Prepare for navigation to category view or search results view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "visitCategoryView" {
             let CategoryViewController = segue.destination as! CategoryViewController

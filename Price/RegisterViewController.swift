@@ -53,10 +53,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                     let password = registerPasswordTextField.text,
                     let name = registerNameTextField.text {
                     // ①FirebaseAuthにemailとpasswordでアカウントを作成する
+                    // ①Create user account by input email and password on FirebaseAuth
                     Auth.auth().createUser(withEmail: email, password: password, completion: { (result, error) in
                         if let user = result?.user {
                             print("ユーザー作成完了 uid:" + user.uid)
                             // ②FirestoreのUsersコレクションにdocumentID = ログインしたuidでデータを作成する
+                            // ②Make user data with documentID and login uid in Users Collection of Firestore
                             Firestore.firestore().collection("users").document(user.uid).setData([
                                 "name": name
                             ], completion: { error in
@@ -69,16 +71,18 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                                 } else {
                                     print("ユーザー作成完了 name:" + name)
                                     // ③成功した場合はTodo一覧画面に画面遷移を行う
+                                    // when ② success, move to HomeViewController
                                     let storyboard: UIStoryboard = self.storyboard!
                                     let next = storyboard.instantiateViewController(withIdentifier: "toHome") as! UITabBarController
                                     next.selectedIndex = 0
-//                                    self.navigationController?.pushViewController(next, animated: true)
+
                                     next.modalPresentationStyle = .fullScreen
                                     self.present(next, animated: true, completion: nil)
                                 }
                             })
                         } else if let error = error {
                             // ①が失敗した場合
+                            // when ① fail
                             print("Firebase Auth 新規登録失敗 " + error.localizedDescription)
                             let dialog = UIAlertController(title: "新規登録失敗", message: error.localizedDescription, preferredStyle: .alert)
                             dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

@@ -38,7 +38,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
                                                    right: 0)
         cartCollectionView.collectionViewLayout = layout
 
-        // Do any additional setup after loading the view.
+        // additional setup after loading the view.
         products = readProducts()
 
         
@@ -50,7 +50,8 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         // `UIGestureRecognizerDelegate`を設定するのをお忘れなく
         longPressRecognizer.delegate = self
 
-            // tableViewにrecognizerを設定
+        // tableViewにrecognizerを設定
+        // Add long press gesture recognizer to the collection view cells
         cartCollectionView.addGestureRecognizer(longPressRecognizer)
         
         
@@ -59,6 +60,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
+        // total price and product count variables for display
         var totalPrice: Float = 0
         var totalProduct: Int = 0
         
@@ -70,6 +72,8 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         totalPriceLabel.text = String(totalPrice) + " yen"
         totalProductLabel.text = "Total " + String(totalProduct) + " Items"
+        
+        // Reload collection view data
         cartCollectionView.reloadData()
     }
     
@@ -80,6 +84,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = cartCollectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath)
         
+        // Product image
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
         let url = URL(string: products[indexPath.row].imageUrl)
         DispatchQueue.global().async {
@@ -93,6 +98,7 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
                 print("Error : (err.localizedDescription)")
             }
         }
+        
         let productNameLabel = cell.contentView.viewWithTag(2) as! UILabel
         productNameLabel.text = products[indexPath.row].name
         let productPriceLabel = cell.contentView.viewWithTag(3) as! UILabel
@@ -112,12 +118,12 @@ class CartViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView,
                               didSelectItemAt indexPath: IndexPath) {
     
-        // move to link of product
+        // Open the link of the selected product
         guard let url = URL(string: products[indexPath.row].url) else { return }
         UIApplication.shared.open(url)
     }
     
-    
+    // Read products from Realm database
     func readProducts() -> [ProductInfo]{
         return Array(realm.objects(ProductInfo.self))
     }
@@ -147,24 +153,22 @@ extension CartViewController: ContextMenuDelegate {
                               forRowAt index: Int) -> Bool {
         
         
-        print("コンテキストメニューの", index, "番目のセルが選択された！")
-        print("そのセルには", item.title, "というテキストが書いてあるよ!")
         
         switch index {
             case 0:
                 //0番目のセル(1番上のメニューがタップされると実行されます)
                 //この例では編集メニューに設定してあります
                 print(getUrl)
-                print("編集が押された!")
                 let url = URL(string: getUrl)
+                // Open Link is pressed
                 UIApplication.shared.open(url!)
             
             case 1:
-                //同様です
-                print("削除が押された!")
+                //when tap delete button
 //                deleteRealm(url: getUrl)
             
             default:
+                // Other cell is pressed
                 //ここはその他のセルがタップされた際に実行されます
                 break
             }
@@ -181,23 +185,25 @@ extension CartViewController: ContextMenuDelegate {
                                 forRowAt index: Int) {
     }
     
-    /**
-     コンテキストメニューが表示されたら呼ばれる
-     */
+
+    //コンテキストメニューが表示されたら呼ばれる
+    // Context menu appearance and disappearance handlers
     func contextMenuDidAppear(_ contextMenu: ContextMenu) {
-        print("コンテキストメニューが表示された!")
+        print("コンテキストメニューが表示された")
     }
     
     /**
      コンテキストメニューが消えたら呼ばれる
      */
     func contextMenuDidDisappear(_ contextMenu: ContextMenu) {
-        print("コンテキストメニューが消えた!")
+        print("コンテキストメニューが消えた")
     }
     
     /// セルが長押しした際に呼ばれるメソッド
+    /// Long press gesture handler
     @objc func cellLongPressed(_ recognizer: UILongPressGestureRecognizer) {
 
+        // Get indexPath for the pressed position
         // 押された位置でcellのPathを取得
         let point = recognizer.location(in: cartCollectionView)
         // 押された位置に対応するindexPath
@@ -210,19 +216,21 @@ extension CartViewController: ContextMenuDelegate {
         } else if recognizer.state == UIGestureRecognizer.State.began  {
             // 長押しされた場合の処理
             
+            // Set the URL of the selected product
             getUrl = products[indexPath!.row].url
-            print(indexPath?.row)
 //          let addName = productNames[indexPath?.row] /// 本番用
 //          let addPrice = "USD " + productPrice[indexPath?.row] /// 本番用
 //          let addUrl = URL(string: productImageUrl[indexPath?.row]) /// 本番用
                 
             //コンテキストメニューの内容を作成します
+            // Create context menu items
             let add = ContextMenuItemWithImage(title: "Open Link", image: UIImage(systemName: "cart")!)
             let delete = ContextMenuItemWithImage(title: "Delete", image: UIImage(systemName: "trash")!)
                 
-         //コンテキストメニューに表示するアイテムを決定します
+            //コンテキストメニューに表示するアイテムを決定します
             CM.items = [add, delete]
-        //表示します
+            //表示します
+            // Display context menu
             CM.showMenu(viewTargeted: cartCollectionView.cellForItem(at: indexPath!)!,
                         delegate: self,
                         animated: true)

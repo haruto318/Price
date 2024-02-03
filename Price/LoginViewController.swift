@@ -16,6 +16,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //email text field
         self.loginEmailTextField.delegate = self
         loginEmailTextField.layer.borderColor = UIColor.clear.cgColor
         loginEmailTextField.layer.borderWidth = 1.0
@@ -23,6 +24,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginEmailTextField.clipsToBounds = true
         loginEmailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         
+        //password text field
         self.loginPasswordTextField.delegate = self
         loginPasswordTextField.layer.borderColor = UIColor.clear.cgColor
         loginPasswordTextField.layer.borderWidth = 1.0
@@ -30,6 +32,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginPasswordTextField.clipsToBounds = true
         loginPasswordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         
+        //sign in button
         signInBtn.layer.borderColor = UIColor.clear.cgColor
         signInBtn.layer.borderWidth = 1.0
         signInBtn.layer.cornerRadius = 10
@@ -38,6 +41,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     }
 
+    
     @IBAction func tapLoginButton(_ sender: Any) {
         if let email = loginEmailTextField.text,
            let password = loginPasswordTextField.text{
@@ -45,11 +49,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let user = authResult?.user {
                     print("Completed reginteration email:" + email)
-                    // when login success, move to ProductListViewController
+                    // when login success, move to HomeViewController
                     let storyboard: UIStoryboard = self.storyboard!
                     let next = storyboard.instantiateViewController(withIdentifier: "toHome") as! UITabBarController
                     next.selectedIndex = 0
-//                                    self.navigationController?.pushViewController(next, animated: true)
+
                     next.modalPresentationStyle = .fullScreen
                     self.present(next, animated: true, completion: nil)
 

@@ -11,12 +11,14 @@ import OrderedCollections
 class CategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     @IBOutlet var categoryLabel: UILabel!
     
+    // Properties for category information
     var selectedCategoryDict: OrderedDictionary<String,UIImage?>?
     var selectedCategoryName: String = ""
     var cellSize: Int = 0
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     
+    // Outlet for the search text field
     @IBOutlet var valueField: UITextField!
     var keyword: String = ""
 
@@ -61,6 +63,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.dismiss(animated: true, completion: nil)
     }
     
+    // Action for starting the search
     @IBAction func searchStart(){
         if valueField.text != nil{
             keyword = valueField.text!
