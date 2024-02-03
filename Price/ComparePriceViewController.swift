@@ -16,7 +16,7 @@ class ComparePriceViewController: UIViewController, UICollectionViewDelegate, UI
     let realm = try! Realm()
     
     // API token and base URL
-    let token = "JYYQLVJZXWIGERFAUHEYFUJSCKAMJKFZXJMBJHSQYHGQBZMHGDZDQRZKQTGHXNTU"
+    let token = "YOUR_API_KEY"
     let base = "https://api.priceapi.com/v2/jobs/"
     
     // Structs for API response parsing
