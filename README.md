@@ -40,6 +40,6 @@ https://github.com/haruto318/Price/assets/103641225/f1c6ee1c-113e-42f9-be35-819a
 
 ## 全体的な仕組み
 <div align="center">
-  <img width="50%" alt="diagram" src="https://github.com/haruto318/Price/assets/103641225/53dcd5ea-d123-413d-b5c5-257f9ff51c76">
+  <img width="60%" alt="diagram" src="https://github.com/haruto318/Price/assets/103641225/53dcd5ea-d123-413d-b5c5-257f9ff51c76">
 </div>
 
